@@ -2,9 +2,7 @@
 ## Project 01 - Bank Software
 
 Names:
-<< add 3-4 names here >>
-
-Pichsereyvattana Chan
+Jackson Becker, Pichsereyvattana Chan, 
 
 Link to UML Use Case Diagram:
 << add linkk here >>
