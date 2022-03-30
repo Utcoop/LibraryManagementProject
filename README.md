@@ -10,6 +10,9 @@ Link to UML Use Case Diagram:
 Link to UML Class Diagram:
 << add link here >>
 
+Sprint Goal:
+1) Sprint goal - The clients have requested for a developed framework, User classes & working inventory
+
 Three Use Cases that you will implement first:
 1. -
 2. - 
