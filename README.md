@@ -9,7 +9,7 @@ Jackson Becker, Pichsereyvattana Chan,
 Link to UML Diagram: https://drive.google.com/file/d/1NmmAWLjzSOZznr54E5h0V06SBwgq8pqn/view?usp=sharing
 
 Sprint Goal:
-1) Sprint goal - The clients have requested for a developed framework, User classes & working inventory
+1) Sprint goal - The clients have requested for a developed framework, User classes & working inventory (Scrum Master: Pichsereyvattana Chan)
 
 Three Use Cases that you will implement first:
 1. -
