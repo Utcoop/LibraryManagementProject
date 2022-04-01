@@ -1,4 +1,4 @@
-package edu.ithaca.dturnbull.bank;
+package edu.ithaca.dturnbull.LibraryManagementSystem;
 
 public class Kiosk extends Librarian{
 
