@@ -93,6 +93,17 @@ public class LibrarianTest {
     @Test
     void confirmCredTest() {
         Library ith = new Library();
+        HumanLibrarian kate = new HumanLibrarian(ith, "Kate Kerry", "123");
+        kate.addPatron("VZ", "54321");
+
         Kiosk kiosk2 = new Kiosk(ith);
+
+        assertEquals(false, kiosk2.confirmCred(ith.getPatrons().get(0).getId(), "12345"));
+        assertEquals(true, kiosk2.confirmCred(ith.getPatrons().get(0).getId(), "54321"));
+
+        kate.addPatron("Jackson", "rickroll");
+        
+        assertEquals(false, kiosk2.confirmCred(ith.getPatrons().get(1).getId(), "salami"));
+        assertEquals(true, kiosk2.confirmCred(ith.getPatrons().get(1).getId(), "rickroll"));
     }
 }

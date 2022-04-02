@@ -7,17 +7,23 @@ public class Librarian {
     protected static int id;
     protected static Library library;
 
+    public Librarian(Library library) {
+        this.library = library;
+    }
+
     /***
      * 
      * @param accountId of the patron
      * @param password of the patron
      * @post the credential of the patron is confirmed
      */
-    public void confirmCred(String accountId, String password) {
-        ArrayList<Patron> patrons = new ArrayList<>(library.getPatrons());
-        for (Patron patron: patrons) {
-        
+    public boolean confirmCred(int accountId, String password) {
+        List<Patron> patrons = new ArrayList<>(library.getPatrons());
+        for (int i = 0; i < patrons.size(); i++) {
+            if (patrons.get(i).getId() == accountId) {
+            }
         }
+        return false;
     }
 
     /***

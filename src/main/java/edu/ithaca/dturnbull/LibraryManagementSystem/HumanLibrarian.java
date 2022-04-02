@@ -7,7 +7,7 @@ public class HumanLibrarian extends Librarian {
     private static String password;
     
     public HumanLibrarian(Library library, String name, String password) {
-        super();
+        super(library);
         this.id = library.getNextLibrarianId();
         library.increaseNextLibrarianId();
         this.name = name;
