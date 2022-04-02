@@ -21,6 +21,9 @@ public class Librarian {
         List<Patron> patrons = new ArrayList<>(library.getPatrons());
         for (int i = 0; i < patrons.size(); i++) {
             if (patrons.get(i).getId() == accountId) {
+                if (patrons.get(i).getPassword() == password) {
+                    return true;
+                }
             }
         }
         return false;

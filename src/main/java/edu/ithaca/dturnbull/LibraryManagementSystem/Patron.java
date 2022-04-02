@@ -25,4 +25,8 @@ public class Patron {
     public String getName() {
         return this.name;
     }
+
+    public String getPassword() {
+        return this.password;
+    }
 }
