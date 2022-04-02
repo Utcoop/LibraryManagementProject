@@ -26,7 +26,7 @@ public class HumanLibrarian extends Librarian {
      * @param name of the patron to be removed
      * @post the patron is removed from the library's list of patrons
      */
-    public void removePatron(String name) {
+    public void removePatron(int id) {
 
     }
 
@@ -35,7 +35,11 @@ public class HumanLibrarian extends Librarian {
      * @param name of the patron to be reported
      * @post the patron is added to the reported patron list
      */
-    public void reportPatron(String name) {
+    public void reportPatron(int id) {
 
+    }
+
+    public String getName() {
+        return name;
     }
 }

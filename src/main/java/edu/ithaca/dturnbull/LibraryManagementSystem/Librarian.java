@@ -1,16 +1,23 @@
 package edu.ithaca.dturnbull.LibraryManagementSystem;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Librarian {
     protected static int id;
     protected static Library library;
 
     /***
      * 
-     * @param accountId
-     * @param password
+     * @param accountId of the patron
+     * @param password of the patron
+     * @post the credential of the patron is confirmed
      */
     public void confirmCred(String accountId, String password) {
-
+        ArrayList<Patron> patrons = new ArrayList<>(library.getPatrons());
+        for (Patron patron: patrons) {
+        
+        }
     }
 
     /***
@@ -52,4 +59,11 @@ public class Librarian {
 
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public List<Patron> getPatrons() {
+        return patrons;
+    }
 }
