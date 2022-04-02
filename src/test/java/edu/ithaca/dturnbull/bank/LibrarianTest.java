@@ -9,72 +9,90 @@ import edu.ithaca.dturnbull.LibraryManagementSystem.Library;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class LibrarianTest {
-    Library ith = new Library();
+    
     
     @Test
-    void humanLibrarianConstructorTest() { 
-        HumanLibrarian librarian1 = new HumanLibrarian(ith, "Casey Canberg", "123");
-        assertEquals("Casey Canberg", librarian1.getName());
-        assertEquals(0, librarian1.getId());
-
-        HumanLibrarian librarian2 = new HumanLibrarian(ith, "Casandra Lopez", "123");
-        assertEquals("Casandra Lopez", librarian2.getName());
-        assertEquals(1, librarian2.getId());
+    void humanLibrarianAndKioskConstructorTest() {
+        Library lib = new Library();
+        humanLibrarianConstructorTest(lib);
+        kioskConstructorTest(lib);
     }
 
-    @Test
-    void kioskConstructorTest() {
-        Kiosk kiosk1 = new Kiosk(ith);
+    void humanLibrarianConstructorTest(Library lib) { 
+        HumanLibrarian casey = new HumanLibrarian(lib, "Casey Canberg", "123");
+        assertEquals("Casey Canberg", casey.getName());
+        assertEquals(0, casey.getId());
+
+        HumanLibrarian casandra = new HumanLibrarian(lib, "Casandra Lopez", "123");
+        assertEquals("Casandra Lopez", casandra.getName());
+        assertEquals(1, casandra.getId());
+    }
+
+    void kioskConstructorTest(Library lib) {
+        Kiosk kiosk1 = new Kiosk(lib);
         assertEquals(2, kiosk1.getId());
 
-        Kiosk kiosk2 = new Kiosk(ith);
+        Kiosk kiosk2 = new Kiosk(lib);
         assertEquals(3, kiosk2.getId());
+
+        Kiosk kiosk3 = new Kiosk(lib);
+        assertEquals(4, kiosk3.getId());
     }
 
     @Test
     void addPatronTest() {
+        Library ith = new Library();
         HumanLibrarian librarian1 = new HumanLibrarian(ith, "Casey Canberg", "123");
-        assertEquals(0, librarian1.getPatrons().size());
+        assertEquals(0, ith.getPatrons().size());
 
         librarian1.addPatron("Vattana", "123");
-        assertEquals(1, librarian1.getPatrons().size());
-        assertEquals("Vattana", librarian1.getPatrons().get(0).getName());
+        assertEquals(1, ith.getPatrons().size());
+        assertEquals("Vattana", ith.getPatrons().get(0).getName());
 
         librarian1.addPatron("Jackson", "123");
-        assertEquals(2, librarian1.getPatrons().size());
-        assertEquals("Jackson", librarian1.getPatrons().get(1).getName());
+        assertEquals(2, ith.getPatrons().size());
+        assertEquals("Jackson", ith.getPatrons().get(1).getName());
     }
 
     @Test
     void removePatronTest() {
-        HumanLibrarian librarian1 = new HumanLibrarian(ith, "Casey Canberg", "123");
+        Library library = new Library();
+        HumanLibrarian librarian1 = new HumanLibrarian(library, "Casey Canberg", "123");
 
-        assertEquals(2, librarian1.getPatrons().size());
-        librarian1.removePatron(1);
+        assertEquals(0, library.getPatrons().size());
 
-        assertEquals(1, librarian1.getPatrons().size());
+        librarian1.addPatron("Vattana", "123");
+        librarian1.addPatron("Jackson", "123");
+
+        librarian1.removePatron(library.getPatrons().get(0).getId());
+
+        assertEquals(1, library.getPatrons().size());
         
-        librarian1.removePatron(0);
-        assertEquals(0, librarian1.getPatrons().size());
+        librarian1.removePatron(library.getPatrons().get(0).getId());
+        assertEquals(0, library.getPatrons().size());
     }
 
     @Test
     void reportPatronTest() {
+        Library ith = new Library();
         HumanLibrarian librarian1 = new HumanLibrarian(ith, "Casey Canberg", "123");
         librarian1.addPatron("Vattana", "123");
         librarian1.addPatron("Jackson", "123");
 
         assertEquals(0,ith.getReportedPatrons().size());
-        librarian1.reportPatron(3);
+        librarian1.reportPatron(ith.getPatrons().get(0).getId());
 
         assertEquals(1,ith.getReportedPatrons().size());
+        assertEquals("Vattana", ith.getReportedPatrons().get(0).getName());
 
-        librarian1.reportPatron(4);
-        assertEquals(1,ith.getReportedPatrons().size());
+        librarian1.reportPatron(ith.getPatrons().get(1).getId());
+        assertEquals(2,ith.getReportedPatrons().size());
+        assertEquals("Jackson", ith.getReportedPatrons().get(1).getName());
     }
 
     @Test
     void confirmCredTest() {
+        Library ith = new Library();
         Kiosk kiosk2 = new Kiosk(ith);
     }
 }

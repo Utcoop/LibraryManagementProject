@@ -10,7 +10,7 @@ public class Patron {
 
 
     public Patron(Library library, String name, String password){
-        name = name;
+        this.name = name;
         id = library.getNextPatronId();
         library.increaseNextPatronId();
         this.password = password;
@@ -23,6 +23,6 @@ public class Patron {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 }

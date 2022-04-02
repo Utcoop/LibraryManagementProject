@@ -1,5 +1,7 @@
 package edu.ithaca.dturnbull.LibraryManagementSystem;
 
+import java.util.List;
+
 public class HumanLibrarian extends Librarian {
     private static String name;
     private static String password;
@@ -19,7 +21,8 @@ public class HumanLibrarian extends Librarian {
      * @post patron is added to the library's list of patrons
      */
     public void addPatron(String name, String password) {
-
+        Patron newPatron = new Patron(library, name, password);
+        library.addPatron(newPatron);
     }
 
     /***
@@ -27,7 +30,13 @@ public class HumanLibrarian extends Librarian {
      * @post the patron is removed from the library's list of patrons
      */
     public void removePatron(int id) {
-
+        List<Patron> patrons = library.getPatrons();
+        for (int i = 0; i < patrons.size(); i++) {
+            if (patrons.get(i).getId() == id) {
+                library.removePatron(patrons.get(i));
+                return;
+            }
+        }
     }
 
 
@@ -36,7 +45,13 @@ public class HumanLibrarian extends Librarian {
      * @post the patron is added to the reported patron list
      */
     public void reportPatron(int id) {
-
+        List<Patron> patrons = library.getPatrons();
+        for (int i = 0; i < patrons.size(); i++) {
+            if (patrons.get(i).getId() == id) {
+                library.addReportedPatron(patrons.get(i));
+                return;
+            }
+        }
     }
 
     public String getName() {

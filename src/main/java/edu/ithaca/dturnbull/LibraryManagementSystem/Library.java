@@ -15,6 +15,7 @@ public class Library {
         librarians = new ArrayList<>();
         patrons = new ArrayList<>();
         books = new ArrayList<>();
+        reportedPatrons = new ArrayList<>();
     }
 
     public void increaseNextLibrarianId() {
@@ -39,5 +40,17 @@ public class Library {
 
     public List<Patron> getReportedPatrons() {
         return reportedPatrons;
+    }
+
+    public void addPatron(Patron patron) {
+        patrons.add(patron);
+    }
+
+    public void removePatron(Patron patron) {
+        patrons.remove(patron);
+    }
+
+    public void addReportedPatron(Patron patron) {
+        reportedPatrons.add(patron);
     }
 }

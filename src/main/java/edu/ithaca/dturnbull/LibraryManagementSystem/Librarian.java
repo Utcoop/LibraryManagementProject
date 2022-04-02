@@ -62,8 +62,4 @@ public class Librarian {
     public int getId() {
         return id;
     }
-
-    public List<Patron> getPatrons() {
-        return patrons;
-    }
 }
