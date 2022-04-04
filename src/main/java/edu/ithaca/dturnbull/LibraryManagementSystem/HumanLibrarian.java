@@ -54,6 +54,15 @@ public class HumanLibrarian extends Librarian {
         }
     }
 
+
+    /***
+     * @param id of the patron to unreport
+     * @post the patron is removed from the reported patron list
+     */
+    public void unreportPatron(int id) {
+
+    }
+
     public String getName() {
         return name;
     }
