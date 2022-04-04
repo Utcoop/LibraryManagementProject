@@ -15,6 +15,10 @@ public class bookTest {
     @Test 
     void constructorTest() throws UnrecognizedException{
         assertThrows(UnrecognizedException.class, ()-> new Book( "Jumanji", "Lord","24-01-2015", "Horror", 1234.333));
+        assertThrows(UnrecognizedException.class, ()-> new Book( "", "Lord","24-01-2015", "Horror", 12));
+        assertThrows(UnrecognizedException.class, ()-> new Book( "Snakes on the plane", "Lord","24-01-2015", "Derek", 59.99));
+        assertThrows(UnrecognizedException.class, ()-> new Book( "Jumanji", "Lord","04-30-2099", "Horror", 1234.333));
+        
 
 
 
