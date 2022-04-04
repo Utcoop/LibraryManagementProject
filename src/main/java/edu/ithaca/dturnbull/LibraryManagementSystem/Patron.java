@@ -2,16 +2,31 @@ package edu.ithaca.dturnbull.LibraryManagementSystem;
 
 public class Patron {
     int id;
+    String name;
     String password;
     Double fines;
     Book[] booksOut;
     int maxBooks = 5;
 
 
-    public Patron(int accountID, String password){
-        id = accountID;
+    public Patron(Library library, String name, String password){
+        this.name = name;
+        id = library.getNextPatronId();
+        library.increaseNextPatronId();
         this.password = password;
         fines = 0.0;
         booksOut = new Book[maxBooks];
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String getPassword() {
+        return this.password;
     }
 }
