@@ -27,11 +27,11 @@ public class Library {
     }
 
     public void increaseNextPatronId() {
-        nextLibrarianId++;
+        nextPatronId++;
     }
 
     public int getNextPatronId() {
-        return nextLibrarianId;
+        return nextPatronId;
     }
 
     public List<Patron> getPatrons() {
