@@ -12,16 +12,16 @@ Sprint Goal:
 1) Sprint goal - The clients have requested for a developed framework, User classes & working inventory (Scrum Master: Pichsereyvattana Chan)
 
 Three Use Cases that you will implement first:
-1. -
-2. - 
-3. - 
+1. - Login 
+2. - Report
+3. - Search For Book
 
 Which classes & methods do you need to implement for these use cases?
 (Indicated which team member is responsible for the implemenation)
-1. -
-2. -
-3. -
-4. -
+1. - Library (Vattana, Jackson)
+2. - Librarian, HumanLibrarian, Kiosk (Vattana)
+3. - Book (VZ)
+4. - Patron (Jackson)
 5. << add more as needed >>
 
 Don't forget to use Test-Driven Development (TDD)
