@@ -53,4 +53,8 @@ public class Library {
     public void addReportedPatron(Patron patron) {
         reportedPatrons.add(patron);
     }
+
+    public void removeReportedPatron(Patron patron) {
+        reportedPatrons.remove(patron);
+    }
 }
