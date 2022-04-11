@@ -9,13 +9,14 @@ Jackson Becker, Pichsereyvattana Chan, VZ
 Link to UML Diagram: https://drive.google.com/file/d/1NmmAWLjzSOZznr54E5h0V06SBwgq8pqn/view?usp=sharing
 
 Sprint Goal:
-1) * Sprint #1 goal - The clients have requested for a developed framework, User classes & working inventory (Scrum Master: Pichsereyvattana Chan) <br>
+1. * Sprint #1 goal: The clients have requested for a developed framework, User classes & working inventory (Scrum Master: Pichsereyvattana Chan) <br>
    * Sprint #1 Review Demo: https://docs.google.com/document/d/1glSigj9GTEpAkcg1VyQjN7xZAJyfeo5W/edit?usp=sharing&ouid=102149475630556348706&rtpof=true&sd=true <br>
    * Sprint #1 Retrospective Doc: https://docs.google.com/document/d/19qTHqx826r6PCNsXDKlLPbtuFyeEHVUR0Gwjqgzdf5o/edit?usp=sharing <br>
 <br>
 <br>
-2) * Sprint #2 goal - 
-
+2. * Sprint #2 goal: 
+   * Sprint #2 Review Demo:
+   * Sprint #2 Retrospective Doc:
 
 Three Use Cases that you will implement first:
 1. - Login 
