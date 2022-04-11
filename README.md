@@ -2,7 +2,7 @@
 ## Project 01 - Bank Software
 
 Names:
-Jackson Becker, Pichsereyvattana Chan, 
+Jackson Becker, Pichsereyvattana Chan, VZ
 
 
 
