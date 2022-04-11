@@ -18,12 +18,14 @@ Sprints:
 * Sprint #2 goal:
 * Sprint #2 Review Demo: 
 * Sprint #2 Retrospective Doc: 
-              
-Three Use Cases that you will implement first:
-1. - Login 
-2. - Report
-3. - Search For Book
 
+<br>
+Three Use Cases that you will implement first:
+1. Login (For Librarian and Patron)
+2. Report 
+3. Search For Book
+
+<br>
 Which classes & methods do you need to implement for these use cases?
 (Indicated which team member is responsible for the implemenation)
 1. - Library (Vattana, Jackson)
