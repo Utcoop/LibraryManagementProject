@@ -15,10 +15,10 @@ Sprints:
    * Sprint #1 Retrospective Doc: https://docs.google.com/document/d/19qTHqx826r6PCNsXDKlLPbtuFyeEHVUR0Gwjqgzdf5o/edit?usp=sharing <br>
 <br>
 <br>
-* Sprint #2 goal:  <br>
-*  Sprint #2 Review Demo: <br>
-*  Sprint #2 Retrospective Doc: <br>
-
+* Sprint #2 goal: <br>
+* Sprint #2 Review Demo: <br>
+* Sprint #2 Retrospective Doc: <br>
+              
 Three Use Cases that you will implement first:
 1. - Login 
 2. - Report
