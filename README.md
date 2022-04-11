@@ -14,18 +14,18 @@ Sprints:
    * Sprint #1 Review Demo: https://docs.google.com/document/d/1glSigj9GTEpAkcg1VyQjN7xZAJyfeo5W/edit?usp=sharing&ouid=102149475630556348706&rtpof=true&sd=true <br>
    * Sprint #1 Retrospective Doc: https://docs.google.com/document/d/19qTHqx826r6PCNsXDKlLPbtuFyeEHVUR0Gwjqgzdf5o/edit?usp=sharing <br>
 <br>
-<br>
+
 * Sprint #2 goal:
 * Sprint #2 Review Demo: 
-* Sprint #2 Retrospective Doc: 
+* Sprint #2 Retrospective Doc: <br>
 
-<br>
+
 Three Use Cases that you will implement first:
 1. Login (For Librarian and Patron)
 2. Report 
 3. Search For Book
 
-<br>
+
 Which classes & methods do you need to implement for these use cases?
 (Indicated which team member is responsible for the implemenation)
 1. - Library (Vattana, Jackson)
@@ -39,5 +39,4 @@ Don't forget to use Test-Driven Development (TDD)
 2. Write Tests
 3. Implement Method Functions
 
-Good Luck!
 
