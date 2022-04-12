@@ -17,15 +17,17 @@ public class Book {
 
     public String title;
     public String author;
+    public String isbn;
     public String publicationDate;
     public String genre;
     public double cost;
 
 
-    public Book(String title, String author, String publicationDate, String genre, double cost) throws UnrecognizedException{
+    public Book(String title, String author, String publicationDate,String isbn, String genre, double cost) throws UnrecognizedException{
         if((!iswordValid(author) && (!isdateValid(publicationDate)) && !isGenreValid(genre) && !isAmountValid(cost))){
             this.title = title;
             this.author = author;
+            this.isbn = isbn;
             this.publicationDate = publicationDate;
             this.genre = genre;
             this.cost = cost;
@@ -60,6 +62,32 @@ public class Book {
      
 
     }
+    
+    // add for negative numbers
+    
+    public static boolean isIsbnValid(String isbn) throws IllegalArgumentException{
+        if(isbn == null){
+            return false;
+        }
+        else if(isbn.length()> 13|| isbn.length() <13){
+            throw new IllegalArgumentException("Please check the entered isbn number");
+
+        }
+        char[] charArray = isbn.toCharArray();
+        for (int i = 0; i < charArray.length; i++) {
+            char ch = charArray[i];
+            if(ch>'0' && ch <'9'){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        
+        return true;
+    
+
+    }
 
     public static boolean isdateValid(String publicationDate) throws IllegalArgumentException{
         String currentDate = getDate();
@@ -74,7 +102,6 @@ public class Book {
             if(daysDifference < 1){
                 return false;
             }
-            
             
         }
         catch (Exception e) {
@@ -108,6 +135,7 @@ public class Book {
 
     }
 
+    //add this to librarian
     public void setDate(){
         Scanner input = new Scanner(System.in);
 
@@ -136,6 +164,8 @@ public class Book {
     }
     }
 
+
+    //add this to kiosk
     public static void bookSearch(){
         File file = new File("BookList.txt");
         Scanner lookup = new Scanner(System.in);
