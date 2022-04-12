@@ -14,15 +14,26 @@ public class bookTest {
 
     @Test 
     void constructorTest() throws UnrecognizedException{
-        assertThrows(UnrecognizedException.class, ()-> new Book( "Jumanji", "Lord","24-01-2015", "Horror", 1234.333));
-        assertThrows(UnrecognizedException.class, ()-> new Book( "", "Lord","24-01-2015", "Horror", 12));
-        assertThrows(UnrecognizedException.class, ()-> new Book( "Snakes on the plane", "Lord","24-01-2015", "Derek", 59.99));
-        assertThrows(UnrecognizedException.class, ()-> new Book( "Jumanji", "Lord","04-30-2099", "Horror", 1234.333));
+        assertThrows(UnrecognizedException.class, ()-> new Book( "Jumanji", "Lord","24-01-2015","1298723678911", "Horror", 1234.333));
+        assertThrows(UnrecognizedException.class, ()-> new Book( "", "Lord","24-01-2015","7634521891002", "Horror", 12));
+        assertThrows(UnrecognizedException.class, ()-> new Book( "Snakes on the plane", "Lord","24-01-2015","1002200780010", "Derek", 59.99));
+        assertThrows(UnrecognizedException.class, ()-> new Book( "Jumanji", "Lord","04-30-2099","2389876512345", "Horror", 1234.333));
         
 
 
 
     }
+
+    @Test
+    void isIsbnValidTest() throws IllegalArgumentException{
+        assertThrows(IllegalArgumentException.class, ()-> Book.isIsbnValid("1222"));
+        assertThrows(IllegalArgumentException.class, ()-> Book.isIsbnValid("0"));
+        assertFalse(Book.isIsbnValid("-128988912229"));
+        assertTrue(Book.isIsbnValid("1234567891011"));
+
+    }
+
+
     @Test
     void iswordValidTest(){
         //True cases
