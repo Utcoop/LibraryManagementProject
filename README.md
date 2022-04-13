@@ -14,8 +14,8 @@ Sprints:
    * Sprint #1 Review Demo: https://docs.google.com/document/d/1glSigj9GTEpAkcg1VyQjN7xZAJyfeo5W/edit?usp=sharing&ouid=102149475630556348706&rtpof=true&sd=true <br>
    * Sprint #1 Retrospective Doc: https://docs.google.com/document/d/19qTHqx826r6PCNsXDKlLPbtuFyeEHVUR0Gwjqgzdf5o/edit?usp=sharing <br>
 <br>
-
-2. * Sprint #2 goal:
+<br>
+2. * Sprint #2 goal: Goal of Sprint 2:  Fully functional basic library methods with unit and integration tests. (check out/in, add/remove to/from wishlist, book methods, add/remove books, etc)
    * Sprint #2 Review Demo: 
    * Sprint #2 Retrospective Doc: <br>
 
