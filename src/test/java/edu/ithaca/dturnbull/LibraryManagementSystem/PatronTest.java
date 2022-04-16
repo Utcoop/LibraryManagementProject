@@ -5,10 +5,11 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PatronTest {
+    
     @Test
     void PatronConstructorTest() {
-        Library lib = new Library();
-        Patron test = new Patron(lib, "Jackson", "password");
+        Library cop = new Library();
+        Patron test = new Patron(cop, "Jackson", "password");
         assertEquals("Jackson", test.getName());
         assertEquals(0, test.getId());
         assertEquals("password", test.getPassword());
@@ -16,9 +17,9 @@ public class PatronTest {
 
     @Test
     void multiplePatrongTest() { 
-        Library lib = new Library();
-        Patron jacksonPatron = new Patron(lib, "Jackson", "password");
-        Patron vattanaPatron = new Patron(lib, "Vattana", "password");
+        Library cop = new Library();
+        Patron jacksonPatron = new Patron(cop, "Jackson", "password");
+        Patron vattanaPatron = new Patron(cop, "Vattana", "password");
         assertEquals("Jackson", jacksonPatron.getName());
         assertEquals(0, jacksonPatron.getId());
         assertEquals("password", jacksonPatron.getPassword());

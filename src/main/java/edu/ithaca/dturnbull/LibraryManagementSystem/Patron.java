@@ -50,6 +50,7 @@ public class Patron {
      */
     public double checkFines(){
         //TODO
+        return -1;
     }
 
     /**
@@ -57,6 +58,7 @@ public class Patron {
      */
     public String checkWishlist(){
         //TODO
+        return "";
     }
 
     /**
@@ -66,6 +68,7 @@ public class Patron {
      */
     public Boolean bookCheckout(Book book){
         //TODO
+        return false;
     }
 
     public int getId(){
