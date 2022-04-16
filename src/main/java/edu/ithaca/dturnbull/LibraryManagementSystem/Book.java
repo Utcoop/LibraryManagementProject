@@ -61,6 +61,7 @@ public class Book {
 
     }
 
+
     public static boolean isdateValid(String publicationDate) throws IllegalArgumentException{
         String currentDate = getDate();
         SimpleDateFormat myFormat = new SimpleDateFormat("DD-MM-YYYY");
@@ -134,6 +135,10 @@ public class Book {
     else{
         return true;
     }
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public static void bookSearch(){

@@ -25,7 +25,8 @@ public class Library {
      * @throws UnrecognizedException
      */
     public void addBook(String title, String author, String publicationDate, String genre, double cost) throws UnrecognizedException {
-
+        Book newBook = new Book(title, author, publicationDate, genre, cost);
+        books.add(newBook);
     } 
 
     /***
@@ -33,7 +34,11 @@ public class Library {
      * @post the book is removed from the library's book list
      */
     public void removeBook(String title) {
-
+        for (Book book : books) {
+            if (book.getTitle() == title) {
+                books.remove(book);
+            }
+        }
     }
 
     public void increaseNextLibrarianId() {
