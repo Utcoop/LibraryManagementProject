@@ -18,6 +18,24 @@ public class Library {
         reportedPatrons = new ArrayList<>();
     }
 
+    //String title, String author, String publicationDate, String genre, double cost
+    /***
+     * @param title, author, publicationDate, genre, cost of the new book
+     * @post the new book is added to the library's book list
+     * @throws UnrecognizedException
+     */
+    public void addBook(String title, String author, String publicationDate, String genre, double cost) throws UnrecognizedException {
+
+    } 
+
+    /***
+     * @param title of the book to be removed
+     * @post the book is removed from the library's book list
+     */
+    public void removeBook(String title) {
+
+    }
+
     public void increaseNextLibrarianId() {
         nextLibrarianId++;
     }
@@ -52,5 +70,9 @@ public class Library {
 
     public void addReportedPatron(Patron patron) {
         reportedPatrons.add(patron);
+    }
+
+    public List<Book> getBooks() {
+        return books;
     }
 }
