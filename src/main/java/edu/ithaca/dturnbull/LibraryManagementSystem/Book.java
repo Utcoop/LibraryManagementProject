@@ -44,10 +44,7 @@ public class Book {
         if(author.isEmpty()){
             return false;
         }
-        // if(author.contains("0123456789")){
-        //     return false;
-        // }
-    
+       
         char[] charArray = author.toCharArray();
         for (int i = 0; i < charArray.length; i++) {
            char ch = charArray[i];
@@ -186,6 +183,23 @@ public class Book {
             System.out.println(" Cannot write to Given List,  " + file.toString());
         }
 
+    }
+    public String getTitle() {
+        return title;
+    }
+    public String getAuthor() {
+        return author;
+    }
+    public String getIsbn() {
+        return isbn;
+    }
+    public String getPublicationDate() {
+        return publicationDate;
+    } public String getGenre() {
+        return genre;
+    }
+    public double getCost() {
+        return cost;
     }
 
 }
