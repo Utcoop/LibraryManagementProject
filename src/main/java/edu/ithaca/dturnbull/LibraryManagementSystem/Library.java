@@ -4,13 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Library {
-    private static List<Librarian> librarians;
-    private static List<Patron> patrons; 
-    private static List<Book> books;
-    private static List<Patron> reportedPatrons;
-    private static int nextLibrarianId = 0;
-    private static int nextPatronId = 0;
-
+    private List<Librarian> librarians;
+    private List<Patron> patrons; 
+    private List<Book> books;
+    private List<Patron> reportedPatrons;
+    private int nextLibrarianId = 0;
+    private int nextPatronId = 0;
     public Library() {
         librarians = new ArrayList<>();
         patrons = new ArrayList<>();
