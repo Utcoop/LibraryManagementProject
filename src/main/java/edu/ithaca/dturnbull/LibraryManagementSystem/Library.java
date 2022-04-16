@@ -76,6 +76,10 @@ public class Library {
         reportedPatrons.add(patron);
     }
 
+    public void removeReportedPatron(Patron patron) {
+        reportedPatrons.remove(patron);
+    }
+
     public List<Book> getBooks() {
         return books;
     }

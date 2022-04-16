@@ -73,7 +73,7 @@ public class LibrarianTest {
     }
 
     @Test
-    void reportPatronTest() {
+    void reportPatronAndUnreportTest() {
         Library ith = new Library();
         HumanLibrarian librarian1 = new HumanLibrarian(ith, "Casey Canberg", "123");
         librarian1.addPatron("Vattana", "123");
@@ -88,6 +88,12 @@ public class LibrarianTest {
         librarian1.reportPatron(ith.getPatrons().get(1).getId());
         assertEquals(2,ith.getReportedPatrons().size());
         assertEquals("Jackson", ith.getReportedPatrons().get(1).getName());
+
+        librarian1.unreportPatron(ith.getReportedPatrons().get(0).getId());
+        assertEquals(1,ith.getReportedPatrons().size());
+
+        librarian1.unreportPatron(ith.getReportedPatrons().get(0).getId());
+        assertEquals(0,ith.getReportedPatrons().size());
     }
 
     @Test

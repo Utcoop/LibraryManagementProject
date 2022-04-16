@@ -13,8 +13,8 @@ public class LibraryTest {
 
     @Test
     void addAndRemoveBookTest() throws UnrecognizedException {
-       // addBookTest(la);
-       // removeBookTest(la);
+        //addBookTest(la);
+        //removeBookTest(la);
     }
     
     //Library library
