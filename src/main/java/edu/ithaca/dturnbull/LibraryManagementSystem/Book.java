@@ -20,16 +20,17 @@ public class Book {
     public String publicationDate;
     public String genre;
     public double cost;
+    public int copies;
 
 
-    public Book(String title, String author, String publicationDate, String genre, double cost) throws UnrecognizedException{
-        if((!iswordValid(author) && (!isdateValid(publicationDate)) && !isGenreValid(genre) && !isAmountValid(cost))){
+    public Book(String title, String author, String publicationDate, String genre, double cost, int copies) throws UnrecognizedException{
+        if((iswordValid(author) && (isdateValid(publicationDate)) && isGenreValid(genre) && isAmountValid(cost) && (copies >=1))){
             this.title = title;
             this.author = author;
             this.publicationDate = publicationDate;
             this.genre = genre;
             this.cost = cost;
-
+            this.copies = copies;
         }
         else{
             throw new UnrecognizedException("Unkown Text found, please contact the librarian");

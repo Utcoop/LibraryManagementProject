@@ -40,15 +40,26 @@ public class Librarian {
 
     }
 
+    /***
+     * @param title of the book to check if available
+     */
     public void checkBook(String title) {
 
     }
 
-    public void borrowBook(String title) {
+    /***
+     * @param title of the book to borrw, id of the patron borrowing
+     * @post the number of the book copies is decremented by 1 if the book is available
+     */
+    public void borrowBook(String title, int patronId) {
 
     }
 
-    public void returnBook(String title) {
+    /***
+     * @param title of the book, id of the patron returning
+     * @post the number of the book copies is incremented by 1
+     */
+    public void returnBook(String title, int patronId) {
 
     }
 

@@ -23,8 +23,8 @@ public class Library {
      * @post the new book is added to the library's book list
      * @throws UnrecognizedException
      */
-    public void addBook(String title, String author, String publicationDate, String genre, double cost) throws UnrecognizedException {
-        Book newBook = new Book(title, author, publicationDate, genre, cost);
+    public void addBook(String title, String author, String publicationDate, String genre, double cost, int copies) throws UnrecognizedException {
+        Book newBook = new Book(title, author, publicationDate, genre, cost, copies);
         books.add(newBook);
     } 
 
