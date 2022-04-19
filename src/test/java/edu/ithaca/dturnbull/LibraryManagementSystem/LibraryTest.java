@@ -60,10 +60,15 @@ public class LibraryTest {
     assertEquals(0, library.getLibrarians().size());
     HumanLibrarian librarian1 = new HumanLibrarian(library, "Kenny", "123");
 
+    library.addLibrarian(librarian1);
     assertEquals(1, library.getLibrarians().size());
+    assertEquals(0, library.getLibrarians().get(0).getId());
 
     Kiosk kiosk1 = new Kiosk(library);
+    library.addLibrarian(kiosk1);
     
+    assertEquals(2, library.getLibrarians().size());
+    assertEquals(1, library.getLibrarians().get(1).getId());
     }
     
     void removeLibrarianTest(Library library) {
@@ -74,13 +79,5 @@ public class LibraryTest {
     library.removeLibrarian(0);
 
     assertEquals(0, library.getLibrarians().size());
-    }
-
-    
-    }
-
-    @Test
-    void removeLibrarianTest() {
-
     }
 }
