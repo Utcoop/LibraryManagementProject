@@ -60,10 +60,11 @@ public class HumanLibrarian extends Librarian {
      * @post the patron is removed from the reported patron list
      */
     public void unreportPatron(int id) {
-        List<Patron> patrons = library.getPatrons();
-        for (int i = 0; i < patrons.size(); i++) {
-            if (patrons.get(i).getId() == id) {
-                library.removeReportedPatron(patrons.get(i));
+        List<Patron> reportedPatrons = library.getReportedPatrons();
+        for (int i = 0; i < reportedPatrons.size(); i++) {
+            if (reportedPatrons.get(i).getId() == id) {
+                library.removeReportedPatron(reportedPatrons.get(i));
+                return;
             }
         }
     }
