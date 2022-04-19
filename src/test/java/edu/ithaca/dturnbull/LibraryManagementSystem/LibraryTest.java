@@ -9,7 +9,7 @@ import edu.ithaca.dturnbull.LibraryManagementSystem.Library;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class LibraryTest {
-    static Library la = new Library();
+    Library la = new Library();
 
     @Test
     void addAndRemoveBookTest() throws UnrecognizedException {
@@ -46,5 +46,38 @@ public class LibraryTest {
     la.removeBook("Percy Jackson");
 
     assertEquals(0, la.getBooks().size());
+    }
+
+
+    @Test
+    void addAndRemoveLibrarianTest() {
+    Library library = new Library();
+    addLibrarianTest(library);
+    removeLibrarianTest(library);
+    }
+
+    void addLibrarianTest(Library library) {
+    assertEquals(0, library.getLibrarians().size());
+    HumanLibrarian librarian1 = new HumanLibrarian(library, "Kenny", "123");
+
+    library.addLibrarian(librarian1);
+    assertEquals(1, library.getLibrarians().size());
+    assertEquals(0, library.getLibrarians().get(0).getId());
+
+    Kiosk kiosk1 = new Kiosk(library);
+    library.addLibrarian(kiosk1);
+    
+    assertEquals(2, library.getLibrarians().size());
+    assertEquals(1, library.getLibrarians().get(1).getId());
+    }
+    
+    void removeLibrarianTest(Library library) {
+    assertEquals(2, library.getLibrarians().size());
+    library.removeLibrarian(1);
+
+    assertEquals(1, library.getLibrarians().size());
+    library.removeLibrarian(0);
+
+    assertEquals(0, library.getLibrarians().size());
     }
 }

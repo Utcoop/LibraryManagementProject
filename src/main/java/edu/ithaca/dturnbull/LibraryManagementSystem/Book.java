@@ -23,13 +23,13 @@ public class Book {
 
 
     public Book(String title, String author, String publicationDate, String genre, double cost) throws UnrecognizedException{
-        if((!iswordValid(author) && (!isdateValid(publicationDate)) && !isGenreValid(genre) && !isAmountValid(cost))){
+        //!iswordValid(author) && (!isdateValid(publicationDate)) && !isGenreValid(genre) && !isAmountValid(cost))
+        if(iswordValid(author) && (isdateValid(publicationDate)) && isGenreValid(genre) && isAmountValid(cost)){
             this.title = title;
             this.author = author;
             this.publicationDate = publicationDate;
             this.genre = genre;
             this.cost = cost;
-
         }
         else{
             throw new UnrecognizedException("Unkown Text found, please contact the librarian");
@@ -39,12 +39,9 @@ public class Book {
     }
 
     public static boolean iswordValid(String author){
-        if(author.isEmpty()){
+        if(author == ""){
             return false;
         }
-        // if(author.contains("0123456789")){
-        //     return false;
-        // }
     
         char[] charArray = author.toCharArray();
         for (int i = 0; i < charArray.length; i++) {
@@ -96,7 +93,7 @@ public class Book {
 
     public static boolean isGenreValid(String genre) throws UnrecognizedException{
 
-        if(genre.isEmpty()){
+        if(genre == ""){
             return false;
         }
         else if(genre.matches("Crime") || genre.matches("Horror")|| genre.matches("Fantasy") || genre.matches("Adventure") || genre.matches("Science fiction") || genre.matches("Romance")){
@@ -163,7 +160,21 @@ public class Book {
 
     }
 
+    public static void main(String[] args) throws UnrecognizedException {
+        Book book1 = new Book("Harry Potter","Kenny Sun","02-12-2000","Crime",30.0);
+
+
+        Book book2 = new Book("Percy Jackson","Maddison Beer","02-12-2000","Crime",20.0);
+
+
+        Book book3 = new Book("OMG","Kevin Tao","02-12-2000","Crime",15.0);
+        
+        System.out.println(book1.author);
+        System.out.println(book2.author);
+        System.out.println(book3.author);
+        }
 }
+
 
 
 
