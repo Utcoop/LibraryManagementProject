@@ -40,6 +40,22 @@ public class Library {
         }
     }
 
+    /**
+     * @param librarian object
+     * @post the librarian object is added to the library's librarian object
+     */
+    public void addLibrarian(Librarian librarianOrKiosk) {
+
+    }
+
+    /**
+     * @param librarian id
+     * @post the librarian object is removed to the library's librarian object
+     */
+    public void removeLibrarian(int librarianOrKioskId) {
+
+    }
+
     public void increaseNextLibrarianId() {
         nextLibrarianId++;
     }
@@ -82,5 +98,9 @@ public class Library {
 
     public List<Book> getBooks() {
         return books;
+    }
+
+    public List<Librarian> getLibrarians() {
+        return librarians;
     }
 }
