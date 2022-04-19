@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Librarian {
-    protected static int id;
-    protected static Library library;
+    protected int id;
+    protected Library library;
 
     public Librarian(Library library) {
         this.library = library;

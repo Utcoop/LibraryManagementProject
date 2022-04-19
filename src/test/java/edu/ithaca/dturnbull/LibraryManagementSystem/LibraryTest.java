@@ -9,7 +9,7 @@ import edu.ithaca.dturnbull.LibraryManagementSystem.Library;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class LibraryTest {
-    static Library la = new Library();
+    Library la = new Library();
 
     @Test
     void addAndRemoveBookTest() throws UnrecognizedException {
@@ -22,13 +22,13 @@ public class LibraryTest {
     void addBookTest() throws UnrecognizedException {
     assertEquals(0, la.getBooks().size());
 
-    la.addBook("Harry Potter","Mark Twain","02-12-2000","Action",30.0);
+    la.addBook("Harry Potter","Mark Twain","02-12-2000","Crime",30.0,5);
     assertEquals(1, la.getBooks().size());
 
-    la.addBook("Percy Jackson","Mark Twain","02-12-2000","Action",20.0);
+    la.addBook("Percy Jackson","Maddison Beer","02-12-2000","Crime",20.0,10);
     assertEquals(2, la.getBooks().size());
 
-    la.addBook("OMG","Mark Twain","02-12-2000","Action",15.0);
+    la.addBook("OMG","Kenny S","02-12-2000","Crime",15.0,6);
     assertEquals(3, la.getBooks().size());
     }
 
@@ -46,5 +46,38 @@ public class LibraryTest {
     la.removeBook("Percy Jackson");
 
     assertEquals(0, la.getBooks().size());
+    }
+
+
+    @Test
+    void addAndRemoveLibrarianTest() {
+    Library library = new Library();
+    addLibrarianTest(library);
+    removeLibrarianTest(library);
+    }
+
+    void addLibrarianTest(Library library) {
+    assertEquals(0, library.getLibrarians().size());
+    HumanLibrarian librarian1 = new HumanLibrarian(library, "Kenny", "123");
+
+    library.addLibrarian(librarian1);
+    assertEquals(1, library.getLibrarians().size());
+    assertEquals(0, library.getLibrarians().get(0).getId());
+
+    Kiosk kiosk1 = new Kiosk(library);
+    library.addLibrarian(kiosk1);
+    
+    assertEquals(2, library.getLibrarians().size());
+    assertEquals(1, library.getLibrarians().get(1).getId());
+    }
+    
+    void removeLibrarianTest(Library library) {
+    assertEquals(2, library.getLibrarians().size());
+    library.removeLibrarian(1);
+
+    assertEquals(1, library.getLibrarians().size());
+    library.removeLibrarian(0);
+
+    assertEquals(0, library.getLibrarians().size());
     }
 }

@@ -40,6 +40,26 @@ public class Library {
         }
     }
 
+    /**
+     * @param librarian object
+     * @post the librarian object is added to the library's librarian object
+     */
+    public void addLibrarian(Librarian librarianOrKiosk) {
+        librarians.add(librarianOrKiosk);
+    }
+
+    /**
+     * @param librarian id
+     * @post the librarian object is removed to the library's librarian object
+     */
+    public void removeLibrarian(int librarianOrKioskId) {
+        for (int i = 0; i < librarians.size(); i++) {
+            if (librarians.get(i).getId() == librarianOrKioskId) {
+                librarians.remove(librarians.get(i));
+            }
+        }
+    }   
+
     public void increaseNextLibrarianId() {
         nextLibrarianId++;
     }
@@ -82,5 +102,27 @@ public class Library {
 
     public List<Book> getBooks() {
         return books;
+    }
+
+    public List<Librarian> getLibrarians() {
+        return librarians;
+    }
+
+    public static void main(String[] args) {
+        Library library = new Library();
+    HumanLibrarian librarian1 = new HumanLibrarian(library, "Kenny", "123");
+
+    library.addLibrarian(librarian1);
+ 
+
+    Kiosk kiosk1 = new Kiosk(library);
+    library.addLibrarian(kiosk1);
+
+    Kiosk kiosk2 = new Kiosk(library);
+    library.addLibrarian(kiosk2);
+    
+    System.out.println(library.getLibrarians().get(0).getId());
+    System.out.println(library.getLibrarians().get(1).getId());
+    System.out.println(library.getLibrarians().get(2).getId());
     }
 }

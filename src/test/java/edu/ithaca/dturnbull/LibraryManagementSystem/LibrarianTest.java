@@ -112,4 +112,10 @@ public class LibrarianTest {
         assertEquals(false, kiosk2.confirmCred(ith.getPatrons().get(1).getId(), "salami"));
         assertEquals(true, kiosk2.confirmCred(ith.getPatrons().get(1).getId(), "rickroll"));
     }
+
+    @Test
+    void checkBookTest() {
+        
+
+    }
 }

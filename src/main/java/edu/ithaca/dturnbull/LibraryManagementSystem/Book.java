@@ -24,7 +24,8 @@ public class Book {
 
 
     public Book(String title, String author, String publicationDate, String genre, double cost, int copies) throws UnrecognizedException{
-        if((iswordValid(author) && (isdateValid(publicationDate)) && isGenreValid(genre) && isAmountValid(cost) && (copies >=1))){
+        //!iswordValid(author) && (!isdateValid(publicationDate)) && !isGenreValid(genre) && !isAmountValid(cost))
+        if(iswordValid(author) && (isdateValid(publicationDate)) && isGenreValid(genre) && isAmountValid(cost) && (copies > 0)){
             this.title = title;
             this.author = author;
             this.publicationDate = publicationDate;
@@ -40,12 +41,9 @@ public class Book {
     }
 
     public static boolean iswordValid(String author){
-        if(author.isEmpty()){
+        if(author == ""){
             return false;
         }
-        // if(author.contains("0123456789")){
-        //     return false;
-        // }
     
         char[] charArray = author.toCharArray();
         for (int i = 0; i < charArray.length; i++) {
@@ -97,7 +95,7 @@ public class Book {
 
     public static boolean isGenreValid(String genre) throws UnrecognizedException{
 
-        if(genre.isEmpty()){
+        if(genre == ""){
             return false;
         }
         else if(genre.matches("Crime") || genre.matches("Horror")|| genre.matches("Fantasy") || genre.matches("Adventure") || genre.matches("Science fiction") || genre.matches("Romance")){
@@ -164,7 +162,21 @@ public class Book {
 
     }
 
+    public static void main(String[] args) throws UnrecognizedException {
+        Book book1 = new Book("Harry Potter","Kenny Sun","02-12-2000","Crime",30.0,1);
+
+
+        Book book2 = new Book("Percy Jackson","Maddison Beer","02-12-2000","Crime",20.0,5);
+
+
+        Book book3 = new Book("OMG","Kevin Tao","02-12-2000","Crime",15.0,10);
+        
+        System.out.println(book1.author);
+        System.out.println(book2.author);
+        System.out.println(book3.author);
+        }
 }
+
 
 
 
