@@ -166,15 +166,21 @@ public class LibrarianTest {
     void returnBookTest(Library library, Librarian librarian) {
         assertEquals(1, library.getPatrons().get(0).booksOut.size());
 
+        assertEquals(3, library.getBooks().get(0).copies);
+
         librarian.returnBook("Percy Jackson", 0);
+        assertEquals(4, library.getBooks().get(0).copies);
         assertEquals(0, library.getPatrons().get(0).booksOut.size());
 
         assertEquals(2, library.getPatrons().get(1).booksOut.size());
         librarian.returnBook("Percy Jackson", 1);
+        assertEquals(5, library.getBooks().get(0).copies);
 
         assertEquals(1, library.getPatrons().get(1).booksOut.size());
-        librarian.returnBook("Harry Potter", 1);
+        assertEquals(0, library.getBooks().get(1).copies);
 
+        librarian.returnBook("Harry Potter", 1);
+        assertEquals(1, library.getBooks().get(1).copies);
         assertEquals(0, library.getPatrons().get(1).booksOut.size());
     }
 }
