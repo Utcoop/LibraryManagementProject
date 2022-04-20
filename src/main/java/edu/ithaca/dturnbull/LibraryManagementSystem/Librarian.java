@@ -58,9 +58,10 @@ public class Librarian {
     /***
      * @param title of the book to borrw, id of the patron borrowing
      * @post the number of the book copies is decremented by 1 if the book is available
+     * @throws IllegalArgumentException if the book cannot be borrowed due to the lack of copies available
      */
     public void borrowBook(String title, int patronId) {
-
+       
     }
 
     /***

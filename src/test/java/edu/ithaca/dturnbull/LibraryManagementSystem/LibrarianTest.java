@@ -130,6 +130,10 @@ public class LibrarianTest {
 
         checkBookTest(library1, librarian1);
         checkBookTest(library1, kiosk1);
+
+        librarian1.addPatron("Vattana", "123");
+        librarian1.addPatron("Jackson", "123");
+
     }
 
 
@@ -141,11 +145,22 @@ public class LibrarianTest {
         assertTrue(librarian.checkBook("Harry Potter"));
     }
 
-    void borrowBookTest() {
+    void borrowBookTest(Library library, Librarian librarian) {
+        librarian.borrowBook("Percy Jackson", 0);
+        assertEquals(4, library.getBooks().get(0).copies);
 
-    }
+        librarian.borrowBook("Percy Jackson", 1);
+        assertEquals(3, library.getBooks().get(0).copies);
 
-    void returnBookTest() {
+        assertThrows(IllegalArgumentException.class, () -> librarian.borrowBook("Asad", 1)); //no such book in the library to be borrowed
+        
+        librarian.borrowBook("Harry Potter", 1);
+        assertEquals(0, library.getBooks().get(1).copies);
+
+        assertThrows(IllegalArgumentException.class, () -> librarian.borrowBook("Harry Potter", 0)); //no more copies to be borrowed
+    } 
+
+    void returnBookTest(Library library, Librarian librarian) {
 
     }
 }
