@@ -127,6 +127,9 @@ public class LibrarianTest {
 
         library1.addBook("Percy Jackson", "Ali Bibi", "12-28-2002", "Adventure", 17.99, 5);
         library1.addBook("Harry Potter", "Jergie Paulo", "12-28-2002", "Science fiction", 17.99, 1);
+
+        checkBookTest(library1, librarian1);
+        checkBookTest(library1, kiosk1);
     }
 
 

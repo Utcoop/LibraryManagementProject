@@ -43,8 +43,16 @@ public class Librarian {
     /***
      * @param title of the book to check if available
      */
-    public void checkBook(String title) {
-
+    public Boolean checkBook(String title) {
+        List<Book> books = library.getBooks();
+        for (int i = 0; i < books.size(); i++) {
+            if (books.get(i).title == title) {
+                if (books.get(i).copies > 0) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     /***
