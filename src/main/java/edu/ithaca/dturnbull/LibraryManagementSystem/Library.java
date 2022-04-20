@@ -33,9 +33,9 @@ public class Library {
      * @post the book is removed from the library's book list
      */
     public void removeBook(String title) {
-        for (Book book : books) {
-            if (book.getTitle() == title) {
-                books.remove(book);
+        for (int i = 0; i < books.size(); i++) {
+            if (books.get(i).getTitle() == title) {
+                books.remove(books.get(i));
             }
         }
     }

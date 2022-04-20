@@ -114,8 +114,35 @@ public class LibrarianTest {
     }
 
     @Test
-    void checkBookTest() {
-        
+    void checkBookborrowBookreturnBookTest() throws UnrecognizedException {
+        Library library1 = new Library();
+
+        HumanLibrarian librarian1 = new HumanLibrarian(library1, "S1mple", "123");
+        library1.addLibrarian(librarian1);
+
+        Kiosk kiosk1 = new Kiosk(library1);
+        library1.addLibrarian(kiosk1);
+
+        assertThrows(UnrecognizedException.class, ()-> library1.addBook( "Jumanji", "Lord","24-01-2015", "Horror", 1234.333, 0));
+
+        library1.addBook("Percy Jackson", "Ali Bibi", "12-28-2002", "Adventure", 17.99, 5);
+        library1.addBook("Harry Potter", "Jergie Paulo", "12-28-2002", "Science fiction", 17.99, 1);
+    }
+
+
+    void checkBookTest(Library library, Librarian librarian) {
+        assertFalse(librarian.checkBook("Devil from the mars"));
+        assertFalse(librarian.checkBook("Olivia and her journey"));
+
+        assertTrue(librarian.checkBook("Percy Jackson"));
+        assertTrue(librarian.checkBook("Harry Potter"));
+    }
+
+    void borrowBookTest() {
+
+    }
+
+    void returnBookTest() {
 
     }
 }
