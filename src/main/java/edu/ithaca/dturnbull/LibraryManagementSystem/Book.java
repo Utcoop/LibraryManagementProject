@@ -41,6 +41,11 @@ public class Book {
     }
 
     public Book(Book book) {
+        this.title = book.title;
+        this.author = book.author;
+        this.publicationDate = book.publicationDate;
+        this.genre = book.genre;
+        this.cost = book.cost;
         this.copies = 1;
     }
 
