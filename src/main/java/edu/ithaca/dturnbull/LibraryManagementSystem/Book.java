@@ -40,6 +40,10 @@ public class Book {
 
     }
 
+    public Book(Book book) {
+        this.copies = 1;
+    }
+
     public static boolean iswordValid(String author){
         if(author == ""){
             return false;

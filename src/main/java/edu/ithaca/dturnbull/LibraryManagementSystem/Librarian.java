@@ -61,7 +61,28 @@ public class Librarian {
      * @throws IllegalArgumentException if the book cannot be borrowed due to the lack of copies available
      */
     public void borrowBook(String title, int patronId) {
-       
+        List<Book> books = library.getBooks();
+        List<Patron> patrons = library.getPatrons();
+       if (checkBook(title)) {
+        for (int j = 0; j < patrons.size(); j++) {
+            if (patrons.get(j).getId() == patronId) {
+                if (patrons.get(j).booksOut.size() > patrons.get(j).maxBooks) {
+                    throw new IllegalArgumentException();
+                } else {
+                    for (int i = 0; i < books.size(); i++) {
+                        if (books.get(i).title == title) {
+                            patrons.get(j).booksOut.add(new Book(books.get(i)));
+                            books.get(i).copies--;
+                        }
+                    }
+                   
+                }
+
+            }
+        }
+            
+            
+       }
     }
 
     /***
