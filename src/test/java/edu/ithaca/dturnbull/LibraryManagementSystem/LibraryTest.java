@@ -13,22 +13,20 @@ public class LibraryTest {
 
     @Test
     void addAndRemoveBookTest() throws UnrecognizedException {
-        //addBookTest(la);
-        //removeBookTest(la);
+        addBookTest(la);
+        removeBookTest(la);
     }
-    
-    //Library library
-    @Test
-    void addBookTest() throws UnrecognizedException {
+
+    void addBookTest(Library library) throws UnrecognizedException {
     assertEquals(0, la.getBooks().size());
 
-    la.addBook("Harry Potter","Mark Twain","02-12-2000","Action",30.0);
+    la.addBook("Harry Potter","Mark Twain","02-12-2000","Crime",30.0,5);
     assertEquals(1, la.getBooks().size());
 
-    la.addBook("Percy Jackson","Mark Twain","02-12-2000","Action",20.0);
+    la.addBook("Percy Jackson","Maddison Beer","02-12-2000","Crime",20.0,10);
     assertEquals(2, la.getBooks().size());
 
-    la.addBook("OMG","Mark Twain","02-12-2000","Action",15.0);
+    la.addBook("OMG","Kenny S","02-12-2000","Crime",15.0,6);
     assertEquals(3, la.getBooks().size());
     }
 

@@ -20,22 +20,33 @@ public class Book {
     public String publicationDate;
     public String genre;
     public double cost;
+    public int copies;
 
 
-    public Book(String title, String author, String publicationDate, String genre, double cost) throws UnrecognizedException{
+    public Book(String title, String author, String publicationDate, String genre, double cost, int copies) throws UnrecognizedException{
         //!iswordValid(author) && (!isdateValid(publicationDate)) && !isGenreValid(genre) && !isAmountValid(cost))
-        if(iswordValid(author) && (isdateValid(publicationDate)) && isGenreValid(genre) && isAmountValid(cost)){
+        if(iswordValid(author) && (isdateValid(publicationDate)) && isGenreValid(genre) && isAmountValid(cost) && (copies > 0)){
             this.title = title;
             this.author = author;
             this.publicationDate = publicationDate;
             this.genre = genre;
             this.cost = cost;
+            this.copies = copies;
         }
         else{
             throw new UnrecognizedException("Unkown Text found, please contact the librarian");
 
         }
 
+    }
+
+    public Book(Book book) {
+        this.title = book.title;
+        this.author = book.author;
+        this.publicationDate = book.publicationDate;
+        this.genre = book.genre;
+        this.cost = book.cost;
+        this.copies = 1;
     }
 
     public static boolean iswordValid(String author){
@@ -161,13 +172,13 @@ public class Book {
     }
 
     public static void main(String[] args) throws UnrecognizedException {
-        Book book1 = new Book("Harry Potter","Kenny Sun","02-12-2000","Crime",30.0);
+        Book book1 = new Book("Harry Potter","Kenny Sun","02-12-2000","Crime",30.0,1);
 
 
-        Book book2 = new Book("Percy Jackson","Maddison Beer","02-12-2000","Crime",20.0);
+        Book book2 = new Book("Percy Jackson","Maddison Beer","02-12-2000","Crime",20.0,5);
 
 
-        Book book3 = new Book("OMG","Kevin Tao","02-12-2000","Crime",15.0);
+        Book book3 = new Book("OMG","Kevin Tao","02-12-2000","Crime",15.0,10);
         
         System.out.println(book1.author);
         System.out.println(book2.author);

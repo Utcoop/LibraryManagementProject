@@ -112,4 +112,75 @@ public class LibrarianTest {
         assertEquals(false, kiosk2.confirmCred(ith.getPatrons().get(1).getId(), "salami"));
         assertEquals(true, kiosk2.confirmCred(ith.getPatrons().get(1).getId(), "rickroll"));
     }
+
+    @Test
+    void checkBookborrowBookreturnBookTest() throws UnrecognizedException {
+        Library library1 = new Library();
+
+        HumanLibrarian librarian1 = new HumanLibrarian(library1, "S1mple", "123");
+        library1.addLibrarian(librarian1);
+
+        Kiosk kiosk1 = new Kiosk(library1);
+        library1.addLibrarian(kiosk1);
+
+        assertThrows(UnrecognizedException.class, ()-> library1.addBook( "Jumanji", "Lord","24-01-2015", "Horror", 1234.333, 0));
+
+        library1.addBook("Percy Jackson", "Ali Bibi", "12-28-2002", "Adventure", 17.99, 5);
+        library1.addBook("Harry Potter", "Jergie Paulo", "12-28-2002", "Science fiction", 17.99, 1);
+
+        checkBookTest(library1, librarian1);
+        checkBookTest(library1, kiosk1);
+
+        librarian1.addPatron("Vattana", "123");
+        librarian1.addPatron("Jackson", "123");
+
+        borrowBookTest(library1, librarian1);
+        returnBookTest(library1, librarian1);
+
+    }
+
+
+    void checkBookTest(Library library, Librarian librarian) {
+        assertFalse(librarian.checkBook("Devil from the mars"));
+        assertFalse(librarian.checkBook("Olivia and her journey"));
+
+        assertTrue(librarian.checkBook("Percy Jackson"));
+        assertTrue(librarian.checkBook("Harry Potter"));
+    }
+
+    void borrowBookTest(Library library, Librarian librarian) {
+        librarian.borrowBook("Percy Jackson", 0);
+        assertEquals(4, library.getBooks().get(0).copies);
+
+        librarian.borrowBook("Percy Jackson", 1);
+        assertEquals(3, library.getBooks().get(0).copies);
+
+        assertThrows(IllegalArgumentException.class, () -> librarian.borrowBook("Asad", 1)); //no such book in the library to be borrowed
+        
+        librarian.borrowBook("Harry Potter", 1);
+        assertEquals(0, library.getBooks().get(1).copies);
+
+        assertThrows(IllegalArgumentException.class, () -> librarian.borrowBook("Harry Potter", 0)); //no more copies to be borrowed
+    } 
+
+    void returnBookTest(Library library, Librarian librarian) {
+        assertEquals(1, library.getPatrons().get(0).booksOut.size());
+
+        assertEquals(3, library.getBooks().get(0).copies);
+
+        librarian.returnBook("Percy Jackson", 0);
+        assertEquals(4, library.getBooks().get(0).copies);
+        assertEquals(0, library.getPatrons().get(0).booksOut.size());
+
+        assertEquals(2, library.getPatrons().get(1).booksOut.size());
+        librarian.returnBook("Percy Jackson", 1);
+        assertEquals(5, library.getBooks().get(0).copies);
+
+        assertEquals(1, library.getPatrons().get(1).booksOut.size());
+        assertEquals(0, library.getBooks().get(1).copies);
+
+        librarian.returnBook("Harry Potter", 1);
+        assertEquals(1, library.getBooks().get(1).copies);
+        assertEquals(0, library.getPatrons().get(1).booksOut.size());
+    }
 }
