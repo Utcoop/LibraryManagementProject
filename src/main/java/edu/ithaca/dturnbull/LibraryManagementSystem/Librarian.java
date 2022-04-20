@@ -63,7 +63,7 @@ public class Librarian {
     public void borrowBook(String title, int patronId) {
         List<Book> books = library.getBooks();
         List<Patron> patrons = library.getPatrons();
-       if (checkBook(title)) {
+        if (checkBook(title)) {
         for (int j = 0; j < patrons.size(); j++) {
             if (patrons.get(j).getId() == patronId) {
                 if (patrons.get(j).booksOut.size() > patrons.get(j).maxBooks) {
@@ -75,13 +75,11 @@ public class Librarian {
                             books.get(i).copies--;
                         }
                     }
-                   
                 }
-
             }
-        }
-            
-            
+        }       
+       } else {
+           throw new IllegalArgumentException("Book is not available to be borrowed.");
        }
     }
 
@@ -90,7 +88,24 @@ public class Librarian {
      * @post the number of the book copies is incremented by 1
      */
     public void returnBook(String title, int patronId) {
+        List<Book> books = library.getBooks();
+        List<Patron> patrons = library.getPatrons();
 
+        for (int i = 0; i < patrons.size(); i++) {
+            if (patrons.get(i).getId() == patronId) {
+                List<Book> patronBookOutList = patrons.get(i).booksOut;
+                for (int j = 0; j < patronBookOutList.size(); j++) {
+                    if (patronBookOutList.get(j).title == title) {
+                        patronBookOutList.remove(patronBookOutList.get(j));
+                        for (int n = 0; n < books.size(); n++) {
+                            if (books.get(n).title == title) {
+                                books.get(n).copies++;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public void addToWishList(String title) {

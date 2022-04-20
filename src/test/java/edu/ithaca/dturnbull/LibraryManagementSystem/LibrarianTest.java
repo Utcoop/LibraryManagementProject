@@ -134,6 +134,9 @@ public class LibrarianTest {
         librarian1.addPatron("Vattana", "123");
         librarian1.addPatron("Jackson", "123");
 
+        borrowBookTest(library1, librarian1);
+        returnBookTest(library1, librarian1);
+
     }
 
 
@@ -166,12 +169,12 @@ public class LibrarianTest {
         librarian.returnBook("Percy Jackson", 0);
         assertEquals(0, library.getPatrons().get(0).booksOut.size());
 
-        assertEquals(2, library.getPatrons().get(0).booksOut.size());
+        assertEquals(2, library.getPatrons().get(1).booksOut.size());
         librarian.returnBook("Percy Jackson", 1);
 
-        assertEquals(1, library.getPatrons().get(0).booksOut.size());
-        librarian.returnBook("Percy Jackson", 1);
+        assertEquals(1, library.getPatrons().get(1).booksOut.size());
+        librarian.returnBook("Harry Potter", 1);
 
-        assertEquals(0, library.getPatrons().get(0).booksOut.size());
+        assertEquals(0, library.getPatrons().get(1).booksOut.size());
     }
 }
