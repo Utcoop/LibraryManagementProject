@@ -95,14 +95,6 @@ public class Library {
         patrons.remove(patron);
     }
 
-    public void addLibrarian(Librarian librarian) {
-        librarians.add(librarian);
-    }
-
-    public void removeLibrarian(Librarian librarian) {
-        librarians.remove(librarian);
-    }
-
     public void addReportedPatron(Patron patron) {
         reportedPatrons.add(patron);
     }
@@ -175,6 +167,7 @@ public class Library {
         // if we reach here, then element was
         // not present
         throw new InvalidUserException("Invalid ID/Password combination.");
+    }
 
     public List<Librarian> getLibrarians() {
         return librarians;
