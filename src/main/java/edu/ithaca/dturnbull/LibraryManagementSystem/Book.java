@@ -12,6 +12,13 @@ import java.util.Scanner;
 
 import java.util.Calendar;
 
+/**
+ * Book
+ * This class will allow to check the entered information about books
+ * @author Vaibhav Zaveri
+ * 4/21/2022
+ */
+
 
 public class Book {
 
@@ -21,6 +28,17 @@ public class Book {
     public String publicationDate;
     public String genre;
     public double cost;
+
+    /**
+     * constructor
+     * @param title
+     * @param author
+     * @param publicationDate
+     * @param isbn
+     * @param genre
+     * @param cost
+     * @throws UnrecognizedException
+     */
 
 
     public Book(String title, String author, String publicationDate,String isbn, String genre, double cost) throws UnrecognizedException{
@@ -39,6 +57,13 @@ public class Book {
         }
 
     }
+    /**
+     * iswordValid()
+     * checks if entered word is valid
+     * @param author
+     * @return
+     * method type - accessor - checks word
+     */
 
     public static boolean iswordValid(String author){
         if(author.isEmpty()){
@@ -60,7 +85,14 @@ public class Book {
 
     }
     
-    // add for negative numbers
+    /**
+     * isIsbnValid()
+     * checks if entered isbn is valid
+     * @param isbn
+     * @return
+     * @throws IllegalArgumentException
+     * method type - accessor - checks isbn
+     */
     
     public static boolean isIsbnValid(String isbn) throws IllegalArgumentException{
         if(isbn == null){
@@ -85,6 +117,15 @@ public class Book {
     
 
     }
+
+    /**
+     * isdateValid()
+     * checks if entered publication date is valid
+     * @param publicationDate
+     * @return
+     * @throws IllegalArgumentException
+     * method type - accessor - checks date
+     */
 
     public static boolean isdateValid(String publicationDate) throws IllegalArgumentException{
         String currentDate = getDate();
@@ -111,12 +152,25 @@ public class Book {
 
     }
 
+    /**
+     * getDate()
+     * used to get current date
+     * @return date in specified format
+     */
+
     static String getDate() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("DD-MM-YYYY");
         LocalDateTime now = LocalDateTime.now();
        return dtf.format(now);
     }
 
+    /**
+     * isGenreValid()
+     * checks if genre is available or not
+     * @param genre
+     * @throws UnrecognizedException if genre is invalid
+     * method type - accessor - checks genre
+     */
     public static boolean isGenreValid(String genre) throws UnrecognizedException{
 
         if(genre.isEmpty()){
@@ -132,7 +186,11 @@ public class Book {
 
     }
 
-    //add this to librarian
+    /**
+     * setDate()
+     * prints current time and helps trach time after book is checkedOut
+     */
+
     public void setDate(){
         Scanner input = new Scanner(System.in);
 
@@ -146,6 +204,12 @@ public class Book {
         System.out.println("Time after the date that the book was checked out" + checkedOutTime);
     }
 
+    /**
+     * isAmountValid
+     * checks if the entered amount is valid
+     * @param amount
+     * method type - accessor - checks amount
+     */
     public static boolean isAmountValid(double amount){
     String doubleStr = Double.toString(amount);
 
@@ -161,8 +225,11 @@ public class Book {
     }
     }
 
-
-    //add this to kiosk
+    /**
+     * bookSearch
+     * Used to look for book in a txt file
+     * method type:accessor
+     */
     public static void bookSearch(){
         File file = new File("BookList.txt");
         Scanner lookup = new Scanner(System.in);
@@ -174,7 +241,7 @@ public class Book {
     
             while (scanner.hasNext()) {
                 final String lineFromFile = scanner.nextLine();
-                if (lineFromFile.contains(name)) { // Book found in list
+                if (lineFromFile.contains(name)) { 
                     System.out.println("Book Found " + name);
                     break;
                 }
@@ -184,20 +251,51 @@ public class Book {
         }
 
     }
+
+    /**
+     * returns title
+     * @return
+     * method type:accessor
+     */
     public String getTitle() {
         return title;
     }
+    /**
+     * returns author
+     * @return
+     * method type:accessor
+     */
     public String getAuthor() {
         return author;
     }
+    /**
+     * 
+     * @return
+     * method type:accessor
+     */
     public String getIsbn() {
         return isbn;
     }
+    /**
+     * 
+     * method type:accessor
+     */
     public String getPublicationDate() {
         return publicationDate;
-    } public String getGenre() {
+    } 
+    /**
+     * 
+     * @return
+     * method type:accessor
+     */
+    public String getGenre() {
         return genre;
     }
+    /**
+     * returns cost
+     * @return
+     * method type:accessor
+     */
     public double getCost() {
         return cost;
     }
