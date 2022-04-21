@@ -1,13 +1,16 @@
 package edu.ithaca.dturnbull.LibraryManagementSystem;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Patron {
     int Id;
     String password;
     String name;
     Double fines;
-    Book[] booksOut;
+    List<Book> booksOut;
     int maxBooks = 5;
-    Book[] wishlist;
+    List<Book> wishlist;
 
 
     public Patron(Library library, String name, String password){
@@ -16,8 +19,8 @@ public class Patron {
         this.password = password;
         this.name = name;
         fines = 0.0;
-        booksOut = new Book[maxBooks];
-        wishlist = new Book[maxBooks];
+        booksOut = new LinkedList<>();
+        wishlist = new LinkedList<>();
     }
 
 

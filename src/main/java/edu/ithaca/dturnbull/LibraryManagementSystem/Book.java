@@ -12,24 +12,46 @@ import java.util.Scanner;
 
 import java.util.Calendar;
 
+/**
+ * Book
+ * This class will allow to check the entered information about books
+ * @author Vaibhav Zaveri
+ * 4/21/2022
+ */
+
 
 public class Book {
 
     public String title;
     public String author;
+    public String isbn;
     public String publicationDate;
     public String genre;
     public double cost;
+    public int copies;
+
+    /**
+     * constructor
+     * @param title
+     * @param author
+     * @param publicationDate
+     * @param isbn
+     * @param genre
+     * @param cost
+     * @throws UnrecognizedException
+     */
 
 
-    public Book(String title, String author, String publicationDate, String genre, double cost) throws UnrecognizedException{
-        if((!iswordValid(author) && (!isdateValid(publicationDate)) && !isGenreValid(genre) && !isAmountValid(cost))){
+    public Book(String title, String author, String isbn,String publicationDate, String genre, double cost, int copies) throws UnrecognizedException{
+        //!iswordValid(author) && (!isdateValid(publicationDate)) && !isGenreValid(genre) && !isAmountValid(cost))
+        if(iswordValid(author) && (isdateValid(publicationDate)) && isGenreValid(genre) && isAmountValid(cost) && (copies > 0)){
             this.title = title;
             this.author = author;
+            this.isbn = isbn;
             this.publicationDate = publicationDate;
             this.genre = genre;
             this.cost = cost;
-
+            this.copies = copies;
         }
         else{
             throw new UnrecognizedException("Unkown Text found, please contact the librarian");
@@ -37,15 +59,27 @@ public class Book {
         }
 
     }
+    /**
+     * iswordValid()
+     * checks if entered word is valid
+     * @param author
+     * @return
+     * method type - accessor - checks word
+     */
+
+    public Book(Book book) {
+        this.title = book.title;
+        this.author = book.author;
+        this.publicationDate = book.publicationDate;
+        this.genre = book.genre;
+        this.cost = book.cost;
+        this.copies = 1;
+    }
 
     public static boolean iswordValid(String author){
-        if(author.isEmpty()){
+        if(author == ""){
             return false;
         }
-        // if(author.contains("0123456789")){
-        //     return false;
-        // }
-    
         char[] charArray = author.toCharArray();
         for (int i = 0; i < charArray.length; i++) {
            char ch = charArray[i];
@@ -60,6 +94,48 @@ public class Book {
      
 
     }
+    
+    /**
+     * isIsbnValid()
+     * checks if entered isbn is valid
+     * @param isbn
+     * @return
+     * @throws IllegalArgumentException
+     * method type - accessor - checks isbn
+     */
+    
+    public static boolean isIsbnValid(String isbn) throws IllegalArgumentException{
+        if(isbn == null){
+            return false;
+        }
+        else if(isbn.length()> 13|| isbn.length() <13){
+            throw new IllegalArgumentException("Please check the entered isbn number");
+
+        }
+        char[] charArray = isbn.toCharArray();
+        for (int i = 0; i < charArray.length; i++) {
+            char ch = charArray[i];
+            if(ch>'0' && ch <'9'){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        
+        return true;
+    
+
+    }
+
+    /**
+     * isdateValid()
+     * checks if entered publication date is valid
+     * @param publicationDate
+     * @return
+     * @throws IllegalArgumentException
+     * method type - accessor - checks date
+     */
 
 
     public static boolean isdateValid(String publicationDate) throws IllegalArgumentException{
@@ -76,7 +152,6 @@ public class Book {
                 return false;
             }
             
-            
         }
         catch (Exception e) {
         }
@@ -88,15 +163,28 @@ public class Book {
 
     }
 
+    /**
+     * getDate()
+     * used to get current date
+     * @return date in specified format
+     */
+
     static String getDate() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("DD-MM-YYYY");
         LocalDateTime now = LocalDateTime.now();
        return dtf.format(now);
     }
 
+    /**
+     * isGenreValid()
+     * checks if genre is available or not
+     * @param genre
+     * @throws UnrecognizedException if genre is invalid
+     * method type - accessor - checks genre
+     */
     public static boolean isGenreValid(String genre) throws UnrecognizedException{
 
-        if(genre.isEmpty()){
+        if(genre == ""){
             return false;
         }
         else if(genre.matches("Crime") || genre.matches("Horror")|| genre.matches("Fantasy") || genre.matches("Adventure") || genre.matches("Science fiction") || genre.matches("Romance")){
@@ -108,6 +196,11 @@ public class Book {
 
 
     }
+
+    /**
+     * setDate()
+     * prints current time and helps trach time after book is checkedOut
+     */
 
     public void setDate(){
         Scanner input = new Scanner(System.in);
@@ -122,6 +215,12 @@ public class Book {
         System.out.println("Time after the date that the book was checked out" + checkedOutTime);
     }
 
+    /**
+     * isAmountValid
+     * checks if the entered amount is valid
+     * @param amount
+     * method type - accessor - checks amount
+     */
     public static boolean isAmountValid(double amount){
     String doubleStr = Double.toString(amount);
 
@@ -137,10 +236,11 @@ public class Book {
     }
     }
 
-    public String getTitle() {
-        return title;
-    }
-
+    /**
+     * bookSearch
+     * Used to look for book in a txt file
+     * method type:accessor
+     */
     public static void bookSearch(){
         File file = new File("BookList.txt");
         Scanner lookup = new Scanner(System.in);
@@ -152,7 +252,7 @@ public class Book {
     
             while (scanner.hasNext()) {
                 final String lineFromFile = scanner.nextLine();
-                if (lineFromFile.contains(name)) { // Book found in list
+                if (lineFromFile.contains(name)) { 
                     System.out.println("Book Found " + name);
                     break;
                 }
@@ -163,7 +263,56 @@ public class Book {
 
     }
 
+    /**
+     * returns title
+     * @return
+     * method type:accessor
+     */
+    public String getTitle() {
+        return title;
+    }
+    /**
+     * returns author
+     * @return
+     * method type:accessor
+     */
+    public String getAuthor() {
+        return author;
+    }
+    /**
+     * 
+     * @return
+     * method type:accessor
+     */
+    public String getIsbn() {
+        return isbn;
+    }
+    /**
+     * 
+     * method type:accessor
+     */
+    public String getPublicationDate() {
+        return publicationDate;
+    } 
+    /**
+     * 
+     * @return
+     * method type:accessor
+     */
+    public String getGenre() {
+        return genre;
+    }
+    /**
+     * returns cost
+     * @return
+     * method type:accessor
+     */
+    public double getCost() {
+        return cost;
+    }
+
 }
+
 
 
 

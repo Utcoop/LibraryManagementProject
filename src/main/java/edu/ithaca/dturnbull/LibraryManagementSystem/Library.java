@@ -25,9 +25,9 @@ public class Library {
      * @post the new book is added to the library's book list
      * @throws UnrecognizedException
      */
-    public void addBook(String title, String author, String publicationDate, String genre, double cost)
-            throws UnrecognizedException {
-        Book newBook = new Book(title, author, publicationDate, genre, cost);
+    public void addBook(String title, String author, String isbn, String publicationDate, String genre, double cost,
+            int copies) throws UnrecognizedException {
+        Book newBook = new Book(title, author, isbn, publicationDate, genre, cost, copies);
         books.add(newBook);
     }
 
@@ -39,6 +39,26 @@ public class Library {
         for (Book book : books) {
             if (book.getTitle().equals(title)) {
                 books.remove(book);
+            }
+        }
+    }
+
+    /**
+     * @param librarian object
+     * @post the librarian object is added to the library's librarian object
+     */
+    public void addLibrarian(Librarian librarianOrKiosk) {
+        librarians.add(librarianOrKiosk);
+    }
+
+    /**
+     * @param librarian id
+     * @post the librarian object is removed to the library's librarian object
+     */
+    public void removeLibrarian(int librarianOrKioskId) {
+        for (int i = 0; i < librarians.size(); i++) {
+            if (librarians.get(i).getId() == librarianOrKioskId) {
+                librarians.remove(librarians.get(i));
             }
         }
     }
@@ -107,7 +127,7 @@ public class Library {
         while (l <= r) {
             int m = l + (r - l) / 2;
             // Check if x is present at mid
-            if (patrons.get(m).getId() == Id){
+            if (patrons.get(m).getId() == Id) {
                 if (patrons.get(m).getPassword().equals(pwrd)) {
                     return true;
                 } else {
@@ -155,5 +175,25 @@ public class Library {
         // if we reach here, then element was
         // not present
         throw new InvalidUserException("Invalid ID/Password combination.");
+
+    public List<Librarian> getLibrarians() {
+        return librarians;
+    }
+
+    public static void main(String[] args) {
+        Library library = new Library();
+        HumanLibrarian librarian1 = new HumanLibrarian(library, "Kenny", "123");
+
+        library.addLibrarian(librarian1);
+
+        Kiosk kiosk1 = new Kiosk(library);
+        library.addLibrarian(kiosk1);
+
+        Kiosk kiosk2 = new Kiosk(library);
+        library.addLibrarian(kiosk2);
+
+        System.out.println(library.getLibrarians().get(0).getId());
+        System.out.println(library.getLibrarians().get(1).getId());
+        System.out.println(library.getLibrarians().get(2).getId());
     }
 }
