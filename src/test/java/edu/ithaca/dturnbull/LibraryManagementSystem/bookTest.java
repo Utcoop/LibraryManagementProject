@@ -14,11 +14,22 @@ public class bookTest {
 
     @Test 
     void constructorTest() throws UnrecognizedException{
-        assertThrows(UnrecognizedException.class, ()-> new Book( "Jumanji", "Lord","24-01-2015", "Horror", 1234.333, 1));
+        assertThrows(UnrecognizedException.class, ()-> new Book( "Jumanji", "Lord","1234538912314","24-01-2015", "Horror", 1234.333, 1));
 
 
 
     }
+
+    @Test
+    void isIsbnValidTest() throws IllegalArgumentException{
+        assertThrows(IllegalArgumentException.class, ()-> Book.isIsbnValid("1222"));
+        assertThrows(IllegalArgumentException.class, ()-> Book.isIsbnValid("0"));
+        assertFalse(Book.isIsbnValid("-128988912229"));
+        assertTrue(Book.isIsbnValid("1234567891011"));
+
+    }
+
+
     @Test
     void iswordValidTest(){
         //True cases
