@@ -23,20 +23,12 @@ public class Patron {
         wishlist = new LinkedList<>();
     }
 
-    /**
-     * 
-     * @param id user attempts to login in with this id
-     * @param password user attempts to login with this password
-     * @return true if the combination is true and false otherwise 
-     */
-    public Boolean login(int Id, String password){
-        return ( this.Id== Id && this.password.equals(password));
-    }
+
     /**
      * 
      * @param book book to add to wishlist
      */
-    public void addToWishlist(Book book){
+    public void addToWishlist( Book book){
         //TODO
     }
 
@@ -85,5 +77,4 @@ public class Patron {
     public String getPassword(){
         return password;
     }
-
 }
