@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Librarian {
-    protected static int id;
-    protected static Library library;
+    protected int id;
+    protected String password;
+    protected Library library;
 
     public Librarian(Library library) {
         this.library = library;
@@ -70,5 +71,9 @@ public class Librarian {
 
     public int getId() {
         return id;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }

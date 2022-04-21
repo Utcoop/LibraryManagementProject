@@ -5,11 +5,12 @@ import java.util.List;
 
 public class Library {
     private List<Librarian> librarians;
-    private List<Patron> patrons; 
+    private List<Patron> patrons;
     private List<Book> books;
     private List<Patron> reportedPatrons;
     private int nextLibrarianId = 0;
     private int nextPatronId = 0;
+
     public Library() {
         librarians = new ArrayList<>();
         patrons = new ArrayList<>();
@@ -17,16 +18,18 @@ public class Library {
         reportedPatrons = new ArrayList<>();
     }
 
-    //String title, String author, String publicationDate, String genre, double cost
+    // String title, String author, String publicationDate, String genre, double
+    // cost
     /***
      * @param title, author, publicationDate, genre, cost of the new book
      * @post the new book is added to the library's book list
      * @throws UnrecognizedException
      */
-    public void addBook(String title, String author, String publicationDate, String genre, double cost) throws UnrecognizedException {
+    public void addBook(String title, String author, String publicationDate, String genre, double cost)
+            throws UnrecognizedException {
         Book newBook = new Book(title, author, publicationDate, genre, cost);
         books.add(newBook);
-    } 
+    }
 
     /***
      * @param title of the book to be removed
@@ -84,42 +87,65 @@ public class Library {
         return books;
     }
 
-    
     /**
      * 
-     * @param id user attempts to login in with this id
+     * @param id       user attempts to login in with this id
      * @param password user attempts to login with this password
-     * @return true if the combination is true and false otherwise 
+     * @return true if the combination is true and false otherwise
      */
-    public Boolean PatronLogin(int Id, String password, List<Patron> patrons){
+    public Boolean PatronLogin(int Id, String pwrd, List<Patron> patrons) {
         int l = 0, r = patrons.size() - 1;
         while (l <= r) {
             int m = l + (r - l) / 2;
- 
+
             // Check if x is present at mid
-            if (patrons.get(m) == x)
-                
+            if (patrons.get(m).getId() == Id)
+                if (patrons.get(m).getPassword().equals(pwrd)) {
+                    return true;
+                }
+
             // If x greater, ignore left half
-            if (patrons.get(m) < x)
+            if (patrons.get(m).getId() < Id)
                 l = m + 1;
- 
+
             // If x is smaller, ignore right half
             else
                 r = m - 1;
         }
- 
+
         // if we reach here, then element was
         // not present
-        
+        throw new PatronDoesNotExistException();
     }
 
     /**
      * 
-     * @param id user attempts to login in with this id
+     * @param id       user attempts to login in with this id
      * @param password user attempts to login with this password
-     * @return true if the combination is true and false otherwise 
+     * @return true if the combination is true and false otherwise
      */
-    public Boolean LibrarianLogin(int Id, String password, List<Librarian> librarians){
-        return ( this.Id== Id && this.password.equals(password));
+    public Boolean LibrarianLogin(int Id, String pwrd, List<Librarian> librarians) {
+        int l = 0, r = librarians.size() - 1;
+        while (l <= r) {
+            int m = l + (r - l) / 2;
+
+            // Check if x is present at mid
+            if (librarians.get(m).getId() == Id)
+                if (librarians.get(m).getPassword().equals(pwrd)) {
+                    return true;
+                }
+
+            // If x greater, ignore left half
+            if (librarians.get(m).getId() < Id)
+                l = m + 1;
+
+            // If x is smaller, ignore right half
+            else
+                r = m - 1;
+        }
+
+        // if we reach here, then element was
+        // not present
+        throw new LibrarianDoesNotExistException();
     }
 }
