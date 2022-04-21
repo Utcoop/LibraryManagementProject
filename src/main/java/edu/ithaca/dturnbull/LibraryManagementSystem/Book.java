@@ -28,6 +28,7 @@ public class Book {
     public String publicationDate;
     public String genre;
     public double cost;
+    public int copies;
 
     /**
      * constructor
@@ -41,15 +42,16 @@ public class Book {
      */
 
 
-    public Book(String title, String author, String publicationDate,String isbn, String genre, double cost) throws UnrecognizedException{
-        if((!iswordValid(author) && (!isdateValid(publicationDate)) && !isGenreValid(genre) && !isAmountValid(cost))){
+    public Book(String title, String author, String isbn,String publicationDate, String genre, double cost, int copies) throws UnrecognizedException{
+        //!iswordValid(author) && (!isdateValid(publicationDate)) && !isGenreValid(genre) && !isAmountValid(cost))
+        if(iswordValid(author) && (isdateValid(publicationDate)) && isGenreValid(genre) && isAmountValid(cost) && (copies > 0)){
             this.title = title;
             this.author = author;
             this.isbn = isbn;
             this.publicationDate = publicationDate;
             this.genre = genre;
             this.cost = cost;
-
+            this.copies = copies;
         }
         else{
             throw new UnrecognizedException("Unkown Text found, please contact the librarian");
@@ -65,11 +67,19 @@ public class Book {
      * method type - accessor - checks word
      */
 
+    public Book(Book book) {
+        this.title = book.title;
+        this.author = book.author;
+        this.publicationDate = book.publicationDate;
+        this.genre = book.genre;
+        this.cost = book.cost;
+        this.copies = 1;
+    }
+
     public static boolean iswordValid(String author){
-        if(author.isEmpty()){
+        if(author == ""){
             return false;
         }
-       
         char[] charArray = author.toCharArray();
         for (int i = 0; i < charArray.length; i++) {
            char ch = charArray[i];
@@ -127,6 +137,7 @@ public class Book {
      * method type - accessor - checks date
      */
 
+
     public static boolean isdateValid(String publicationDate) throws IllegalArgumentException{
         String currentDate = getDate();
         SimpleDateFormat myFormat = new SimpleDateFormat("DD-MM-YYYY");
@@ -173,7 +184,7 @@ public class Book {
      */
     public static boolean isGenreValid(String genre) throws UnrecognizedException{
 
-        if(genre.isEmpty()){
+        if(genre == ""){
             return false;
         }
         else if(genre.matches("Crime") || genre.matches("Horror")|| genre.matches("Fantasy") || genre.matches("Adventure") || genre.matches("Science fiction") || genre.matches("Romance")){
@@ -301,6 +312,7 @@ public class Book {
     }
 
 }
+
 
 
 

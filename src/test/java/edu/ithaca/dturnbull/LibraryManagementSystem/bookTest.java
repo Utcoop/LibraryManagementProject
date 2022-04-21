@@ -1,4 +1,4 @@
-package edu.ithaca.dturnbull.bank;
+package edu.ithaca.dturnbull.LibraryManagementSystem;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -14,11 +14,7 @@ public class bookTest {
 
     @Test 
     void constructorTest() throws UnrecognizedException{
-        assertThrows(UnrecognizedException.class, ()-> new Book( "Jumanji", "Lord","24-01-2015","1298723678911", "Horror", 1234.333));
-        assertThrows(UnrecognizedException.class, ()-> new Book( "", "Lord","24-01-2015","7634521891002", "Horror", 12));
-        assertThrows(UnrecognizedException.class, ()-> new Book( "Snakes on the plane", "Lord","24-01-2015","1002200780010", "Derek", 59.99));
-        assertThrows(UnrecognizedException.class, ()-> new Book( "Jumanji", "Lord","04-30-2099","2389876512345", "Horror", 1234.333));
-        
+        assertThrows(UnrecognizedException.class, ()-> new Book( "Jumanji", "Lord","1234538912314","24-01-2015", "Horror", 1234.333, 1));
 
 
 
