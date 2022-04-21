@@ -1,5 +1,6 @@
 package edu.ithaca.dturnbull.LibraryManagementSystem;
 
+import java.security.InvalidAlgorithmParameterException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -92,30 +93,30 @@ public class Library {
      * @param id       user attempts to login in with this id
      * @param password user attempts to login with this password
      * @return true if the combination is true and false otherwise
+     * @throws InvalidUserException
      */
-    public Boolean PatronLogin(int Id, String pwrd, List<Patron> patrons) {
+    public Boolean PatronLogin(int Id, String pwrd, List<Patron> patrons) throws InvalidUserException {
         int l = 0, r = patrons.size() - 1;
         while (l <= r) {
             int m = l + (r - l) / 2;
-
             // Check if x is present at mid
-            if (patrons.get(m).getId() == Id)
+            if (patrons.get(m).getId() == Id){
                 if (patrons.get(m).getPassword().equals(pwrd)) {
                     return true;
+                } else {
+                    throw new InvalidUserException("Invalid ID/Password combination.");
                 }
-
+            }
             // If x greater, ignore left half
             if (patrons.get(m).getId() < Id)
                 l = m + 1;
-
             // If x is smaller, ignore right half
             else
                 r = m - 1;
         }
-
         // if we reach here, then element was
         // not present
-        throw new PatronDoesNotExistException();
+        throw new InvalidUserException("Invalid ID/Password combination.");
     }
 
     /**
@@ -123,29 +124,29 @@ public class Library {
      * @param id       user attempts to login in with this id
      * @param password user attempts to login with this password
      * @return true if the combination is true and false otherwise
+     * @throws InvalidUserException
      */
-    public Boolean LibrarianLogin(int Id, String pwrd, List<Librarian> librarians) {
+    public Boolean LibrarianLogin(int Id, String pwrd, List<Librarian> librarians) throws InvalidUserException {
         int l = 0, r = librarians.size() - 1;
         while (l <= r) {
             int m = l + (r - l) / 2;
-
             // Check if x is present at mid
-            if (librarians.get(m).getId() == Id)
+            if (librarians.get(m).getId() == Id){
                 if (librarians.get(m).getPassword().equals(pwrd)) {
                     return true;
+                } else {
+                    throw new InvalidUserException("Invalid ID/Password combination.");
                 }
-
+            }
             // If x greater, ignore left half
             if (librarians.get(m).getId() < Id)
                 l = m + 1;
-
             // If x is smaller, ignore right half
             else
                 r = m - 1;
         }
-
         // if we reach here, then element was
         // not present
-        throw new LibrarianDoesNotExistException();
+        throw new InvalidUserException("Invalid ID/Password combination.");
     }
 }
