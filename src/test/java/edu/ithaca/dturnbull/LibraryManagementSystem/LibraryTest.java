@@ -92,6 +92,7 @@ public class LibraryTest {
         //Checks to see if invalid ID numbers are ignored
         assertThrows(InvalidUserException.class,()->lib.LibrarianLogin(-1, "password")); // negative id
         assertThrows(InvalidUserException.class,()->lib.LibrarianLogin(1000, "password11")); // Id does not exist within system
+    }
 
     @Test
     void addAndRemoveLibrarianTest() {

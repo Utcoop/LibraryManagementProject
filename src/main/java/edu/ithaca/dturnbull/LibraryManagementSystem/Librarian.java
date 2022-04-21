@@ -47,7 +47,7 @@ public class Librarian {
     public Boolean checkBook(String title) {
         List<Book> books = library.getBooks();
         for (int i = 0; i < books.size(); i++) {
-            if (books.get(i).title == title) {
+            if (books.get(i).title.equals(title)) {
                 if (books.get(i).copies > 0) {
                     return true;
                 }
@@ -71,7 +71,7 @@ public class Librarian {
                     throw new IllegalArgumentException();
                 } else {
                     for (int i = 0; i < books.size(); i++) {
-                        if (books.get(i).title == title) {
+                        if (books.get(i).title.equals(title)) {
                             patrons.get(j).booksOut.add(new Book(books.get(i)));
                             books.get(i).copies--;
                         }
@@ -96,10 +96,10 @@ public class Librarian {
             if (patrons.get(i).getId() == patronId) {
                 List<Book> patronBookOutList = patrons.get(i).booksOut;
                 for (int j = 0; j < patronBookOutList.size(); j++) {
-                    if (patronBookOutList.get(j).title == title) {
+                    if (patronBookOutList.get(j).title.equals(title)) {
                         patronBookOutList.remove(patronBookOutList.get(j));
                         for (int n = 0; n < books.size(); n++) {
-                            if (books.get(n).title == title) {
+                            if (books.get(n).title.equals(title)) {
                                 books.get(n).copies++;
                             }
                         }
