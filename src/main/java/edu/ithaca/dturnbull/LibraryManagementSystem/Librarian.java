@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Librarian {
-    protected static int id;
-    protected static Library library;
+    protected int id;
+    protected String password;
+    protected Library library;
 
     public Librarian(Library library) {
         this.library = library;
@@ -21,7 +22,7 @@ public class Librarian {
         List<Patron> patrons = new ArrayList<>(library.getPatrons());
         for (int i = 0; i < patrons.size(); i++) {
             if (patrons.get(i).getId() == accountId) {
-                if (patrons.get(i).getPassword() == password) {
+                if (patrons.get(i).getPassword().equals(password)) {
                     return true;
                 }
             }
@@ -70,5 +71,9 @@ public class Librarian {
 
     public int getId() {
         return id;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }
