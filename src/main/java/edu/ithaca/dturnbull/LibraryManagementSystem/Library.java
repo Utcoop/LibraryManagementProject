@@ -1,6 +1,5 @@
 package edu.ithaca.dturnbull.LibraryManagementSystem;
 
-import java.security.InvalidAlgorithmParameterException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +37,7 @@ public class Library {
      */
     public void removeBook(String title) {
         for (Book book : books) {
-            if (book.getTitle() == title) {
+            if (book.getTitle().equals(title)) {
                 books.remove(book);
             }
         }
@@ -74,6 +73,14 @@ public class Library {
 
     public void removePatron(Patron patron) {
         patrons.remove(patron);
+    }
+
+    public void addLibrarian(Librarian librarian) {
+        librarians.add(librarian);
+    }
+
+    public void removeLibrarian(Librarian librarian) {
+        librarians.remove(librarian);
     }
 
     public void addReportedPatron(Patron patron) {
