@@ -47,4 +47,20 @@ public class LibraryTest {
 
     assertEquals(0, la.getBooks().size());
     }
+
+    @Test
+    void loginTest() throws InvalidUserException{
+        Library lib = new Library();
+        //Check that login works for when the correct information is used
+        lib.addPatron(new Patron(lib, "Jackson Becker", "password"));
+        lib.addPatron(new Patron(lib, "Jamie Woodworth", "Password11"));
+        lib.addPatron(new Patron(lib, "Vattana", "1passWord1"));
+        lib.addPatron(new Patron(lib, "V Z", "secret Password"));
+        assertTrue(lib.PatronLogin(0, "password"));
+        assertFalse(lib.PatronLogin(0, "Password"));
+        assertThrows(InvalidUserException.class, lib.PatronLogin(0, "Password"));
+        //Check that login does not work and that password is case sensitive
+       
+        
+    }
 }

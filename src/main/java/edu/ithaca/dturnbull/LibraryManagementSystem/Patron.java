@@ -25,7 +25,7 @@ public class Patron {
      * 
      * @param book book to add to wishlist
      */
-    public void addToWishlist( book){
+    public void addToWishlist( Book book){
         //TODO
     }
 

@@ -95,7 +95,7 @@ public class Library {
      * @return true if the combination is true and false otherwise
      * @throws InvalidUserException
      */
-    public Boolean PatronLogin(int Id, String pwrd, List<Patron> patrons) throws InvalidUserException {
+    public Boolean PatronLogin(int Id, String pwrd) throws InvalidUserException {
         int l = 0, r = patrons.size() - 1;
         while (l <= r) {
             int m = l + (r - l) / 2;
@@ -126,7 +126,7 @@ public class Library {
      * @return true if the combination is true and false otherwise
      * @throws InvalidUserException
      */
-    public Boolean LibrarianLogin(int Id, String pwrd, List<Librarian> librarians) throws InvalidUserException {
+    public Boolean LibrarianLogin(int Id, String pwrd) throws InvalidUserException {
         int l = 0, r = librarians.size() - 1;
         while (l <= r) {
             int m = l + (r - l) / 2;
