@@ -37,6 +37,12 @@ public class Main {
         main.run();
     }
 
+    /**
+     * addBook()
+     * Used to add book to txt file
+     * if book found, increments number of copies
+     * method type: accessor
+     */
     void addBook() {
         System.out.print("Enter book name: ");
         String name = nextLine();
@@ -55,6 +61,10 @@ public class Main {
         books.add(book);
         save();
     }
+    /**
+     * nextLine()
+     * @return line 
+     */
 
     String nextLine() {
         String line = "";
@@ -64,6 +74,12 @@ public class Main {
         return line;
     }
 
+    /**
+     * checkoutBook()
+     * Used to checkout book from the txt file
+     * if book found, decrements number of copies
+     * method type: accessor
+     */
     void checkoutBook() throws Exception {
         System.out.print("Enter movie title: ");
         String name = nextLine();
@@ -80,6 +96,12 @@ public class Main {
         }
     }
 
+
+    /**
+     * save()
+     * Used to save book to text file
+     * method type:mutator
+     */
     void save() {
         try {
             File file = new File(fileName);
@@ -94,6 +116,11 @@ public class Main {
             e.printStackTrace();
         }
     }
+
+    /**
+     * run()
+     * runs main.java 
+     */
 
     public void run() {
         scanner = new Scanner(System.in);
@@ -125,11 +152,21 @@ public class Main {
         }
     }
 
+    /**
+     * printBooks()
+     * prints books in list while entering options
+     * Allows user to know about available books
+     * method type: accessor
+     */
     void printBooks() {
         for (Book book : books) {
             System.out.print(book.toString());
         }
     }
+
+    /**
+     * constructor
+     */
 
     class Book {
         String name;
