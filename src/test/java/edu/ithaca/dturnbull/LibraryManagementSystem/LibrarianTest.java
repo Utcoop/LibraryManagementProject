@@ -123,10 +123,10 @@ public class LibrarianTest {
         Kiosk kiosk1 = new Kiosk(library1);
         library1.addLibrarian(kiosk1);
 
-        assertThrows(UnrecognizedException.class, ()-> library1.addBook( "Jumanji", "Lord","24-01-2015", "Horror", 1234.333, 0));
+        assertThrows(UnrecognizedException.class, ()-> library1.addBook( "Jumanji", "Lord","123213213","24-01-2015", "Horror", 1234.333, 0));
 
-        library1.addBook("Percy Jackson", "Ali Bibi", "12-28-2002", "Adventure", 17.99, 5);
-        library1.addBook("Harry Potter", "Jergie Paulo", "12-28-2002", "Science fiction", 17.99, 1);
+        library1.addBook("Percy Jackson", "Ali Bibi","123213213", "12-28-2002", "Adventure", 17.99, 5);
+        library1.addBook("Harry Potter", "Jergie Paulo","123213213", "12-28-2002", "Science fiction", 17.99, 1);
 
         checkBookTest(library1, librarian1);
         checkBookTest(library1, kiosk1);
