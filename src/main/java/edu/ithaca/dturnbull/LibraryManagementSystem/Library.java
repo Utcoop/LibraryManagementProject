@@ -83,4 +83,43 @@ public class Library {
     public List<Book> getBooks() {
         return books;
     }
+
+    
+    /**
+     * 
+     * @param id user attempts to login in with this id
+     * @param password user attempts to login with this password
+     * @return true if the combination is true and false otherwise 
+     */
+    public Boolean PatronLogin(int Id, String password, List<Patron> patrons){
+        int l = 0, r = patrons.size() - 1;
+        while (l <= r) {
+            int m = l + (r - l) / 2;
+ 
+            // Check if x is present at mid
+            if (patrons.get(m) == x)
+                
+            // If x greater, ignore left half
+            if (patrons.get(m) < x)
+                l = m + 1;
+ 
+            // If x is smaller, ignore right half
+            else
+                r = m - 1;
+        }
+ 
+        // if we reach here, then element was
+        // not present
+        
+    }
+
+    /**
+     * 
+     * @param id user attempts to login in with this id
+     * @param password user attempts to login with this password
+     * @return true if the combination is true and false otherwise 
+     */
+    public Boolean LibrarianLogin(int Id, String password, List<Librarian> librarians){
+        return ( this.Id== Id && this.password.equals(password));
+    }
 }
