@@ -214,6 +214,8 @@ public class LibrarianTest {
         noLateTest(library1, librarian1);
         lateLessThan7Test(library1, librarian1);
         lateMoreThan7Test(library1, librarian1);
+
+        payFineTest(library1, librarian1);
     }
 
     void noLateTest(Library library, Librarian librarian) throws ParseException {
@@ -261,11 +263,9 @@ public class LibrarianTest {
         Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         Calendar calendar2 = Calendar.getInstance();
-		//calendar.setTime(date);
 		calendar2.add(Calendar.DATE, -15);
         String checkOutDate = formatter.format(calendar2.getTime());
         calendar2.add(Calendar.DATE, 7);
-        //calendar.setTime(date);
 		String dueDate = formatter.format(calendar2.getTime());
 
         library.getPatrons().get(0).booksOut.get(0).checkOutDate = checkOutDate;
@@ -279,9 +279,21 @@ public class LibrarianTest {
         assertEquals(library.getPatrons().get(0).booksOut.get(0).cost + 5.0, library.getPatrons().get(0).fines); //the fine is the cost of the book after 7 days late
     }
 
+    void payFineTest(Library library, HumanLibrarian librarian) {
+        assertEquals(22.99, library.getPatrons().get(0).fines);
 
-    @Test
-    void payFineTest() {
+        assertThrows(IllegalArgumentException.class, () -> librarian.payFine(library.getPatrons().get(0).getId(), -1)); //no negative amount
+        assertThrows(IllegalArgumentException.class, () -> librarian.payFine(library.getPatrons().get(0).getId(), 5.000)); //no decimal places more than 2
 
+        librarian.payFine(library.getPatrons().get(0).getId(), 5.00);
+        assertEquals(17.99, library.getPatrons().get(0).fines);
+
+        
+        librarian.payFine(library.getPatrons().get(0).getId(), 10.00);
+        assertEquals(7.99, library.getPatrons().get(0).fines);
+
+        librarian.payFine(library.getPatrons().get(0).getId(), 10.00);
+        assertEquals(-2.01, library.getPatrons().get(0).fines);
+      
     }
 }
