@@ -209,21 +209,21 @@ public class LibrarianTest {
 		String newDueDate = formatter.format(calendar.getTime());
 
         library.getPatrons().get(0).booksOut.get(0).dueDate = newDueDate;
-        librarian.calculateFine();
+        librarian.calculateFine(library.getPatrons().get(0).getId());
         assertEquals(0, library.getPatrons().get(0).fines); //no fine is applied if book is returned on time
 
         calendar.add(Calendar.DATE, 10);
 		newDueDate = formatter.format(calendar.getTime());
 
         library.getPatrons().get(0).booksOut.get(0).dueDate = newDueDate;
-        librarian.calculateFine();
+        librarian.calculateFine(library.getPatrons().get(0).getId());
         assertEquals(5, library.getPatrons().get(0).fines); //the fine is 5 dollars within the late days is less than 7 days
 
         calendar.add(Calendar.DATE, 10);
 		newDueDate = formatter.format(calendar.getTime());
 
         library.getPatrons().get(0).booksOut.get(0).dueDate = newDueDate;
-        librarian.calculateFine();
+        librarian.calculateFine(library.getPatrons().get(0).getId());
         assertEquals(library.getPatrons().get(0).booksOut.get(0).cost, library.getPatrons().get(0).fines); //the fine is the cost of the book after 7 days late
     }
 
