@@ -8,8 +8,12 @@ import edu.ithaca.dturnbull.LibraryManagementSystem.Library;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class LibrarianTest {
-    
     
     @Test
     void humanLibrarianAndKioskConstructorTest() {
@@ -137,6 +141,10 @@ public class LibrarianTest {
         borrowBookTest(library1, librarian1);
         returnBookTest(library1, librarian1);
 
+        calculateFineTest(library1, librarian1);
+        calculateFineTest(library1, kiosk1);
+        payFineTest(library1, librarian1);
+
     }
 
 
@@ -182,5 +190,45 @@ public class LibrarianTest {
         librarian.returnBook("Harry Potter", 1);
         assertEquals(1, library.getBooks().get(1).copies);
         assertEquals(0, library.getPatrons().get(1).booksOut.size());
+    }
+
+    @Test
+    void calculateFineTest(Library library, Librarian librarian) {
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        String checkOutDate = formatter.format(date);
+        Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		calendar.add(Calendar.DATE, 7);
+		String dueDate = formatter.format(calendar.getTime());
+
+        librarian.borrowBook("Percy Jackson", 0);
+        assertEquals(dueDate, library.getPatrons().get(0).booksOut.get(0).dueDate);
+
+        calendar.add(Calendar.DATE, 3);
+		String newDueDate = formatter.format(calendar.getTime());
+
+        library.getPatrons().get(0).booksOut.get(0).dueDate = newDueDate;
+        librarian.calculateFine();
+        assertEquals(0, library.getPatrons().get(0).fines); //no fine is applied if book is returned on time
+
+        calendar.add(Calendar.DATE, 10);
+		newDueDate = formatter.format(calendar.getTime());
+
+        library.getPatrons().get(0).booksOut.get(0).dueDate = newDueDate;
+        librarian.calculateFine();
+        assertEquals(5, library.getPatrons().get(0).fines); //the fine is 5 dollars within the late days is less than 7 days
+
+        calendar.add(Calendar.DATE, 10);
+		newDueDate = formatter.format(calendar.getTime());
+
+        library.getPatrons().get(0).booksOut.get(0).dueDate = newDueDate;
+        librarian.calculateFine();
+        assertEquals(library.getPatrons().get(0).booksOut.get(0).cost, library.getPatrons().get(0).fines); //the fine is the cost of the book after 7 days late
+    }
+
+    @Test
+    void payFineTest() {
+
     }
 }

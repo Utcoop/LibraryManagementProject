@@ -37,10 +37,6 @@ public class Librarian {
 
     }
 
-    public void payFine(double amount) {
-
-    }
-
     /***
      * @param title of the book to check if available
      */
@@ -117,9 +113,21 @@ public class Librarian {
 
     }
 
-    public void calculateFine() {
+    /***
+     * @post the specified patron's fines are updated
+     */
+    public void calculateFine(int patronId) {
+        
+    }
+
+    /**
+     * @param amount
+     * @post the specified patron's fine is paid
+     */
+    public void payFine(int patronId, double amount) {
 
     }
+
 
     public void checkWishList() {
 
