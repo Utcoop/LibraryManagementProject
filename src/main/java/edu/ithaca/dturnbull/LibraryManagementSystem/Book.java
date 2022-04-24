@@ -34,6 +34,7 @@ public class Book {
     public int copies;
     public String checkOutDate;
     public String dueDate;
+    public Boolean penalized;
 
     /**
      * constructor
@@ -89,6 +90,7 @@ public class Book {
         this.copies = 1;
         this.checkOutDate = checkOutDate;
         this.dueDate = dueDate;
+        this.penalized = false;
     }
 
     public static boolean iswordValid(String author){

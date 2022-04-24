@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 import java.util.Date;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -118,7 +119,7 @@ public class LibrarianTest {
     }
 
     @Test
-    void checkBookborrowBookreturnBookTest() throws UnrecognizedException {
+    void checkBookborrowBookreturnBookTest() throws UnrecognizedException, ParseException {
         Library library1 = new Library();
 
         HumanLibrarian librarian1 = new HumanLibrarian(library1, "S1mple", "123");
@@ -141,9 +142,9 @@ public class LibrarianTest {
         borrowBookTest(library1, librarian1);
         returnBookTest(library1, librarian1);
 
-        calculateFineTest(library1, librarian1);
-        calculateFineTest(library1, kiosk1);
-        payFineTest(library1, librarian1);
+        //calculateFineTest(library1, librarian1);
+        //calculateFineTest(library1, kiosk1);
+        //payFineTest(library1, librarian1);
 
     }
 
@@ -193,39 +194,91 @@ public class LibrarianTest {
     }
 
     @Test
-    void calculateFineTest(Library library, Librarian librarian) {
+    void calculateFineTest() throws ParseException, UnrecognizedException {  
+        Library library1 = new Library();
+
+        HumanLibrarian librarian1 = new HumanLibrarian(library1, "S1mple", "123");
+        library1.addLibrarian(librarian1);
+
+        Kiosk kiosk1 = new Kiosk(library1);
+        library1.addLibrarian(kiosk1);
+
+        assertThrows(UnrecognizedException.class, ()-> library1.addBook( "Jumanji", "Lord","123213213","24-01-2015", "Horror", 1234.333, 0));
+
+        library1.addBook("Percy Jackson", "Ali Bibi","123213213", "12-28-2002", "Adventure", 17.99, 5);
+        library1.addBook("Harry Potter", "Jergie Paulo","123213213", "12-28-2002", "Science fiction", 17.99, 1);
+
+        librarian1.addPatron("Vattana", "123");
+        librarian1.addPatron("Jackson", "123");
+
+        noLateTest(library1, librarian1);
+        lateLessThan7Test(library1, librarian1);
+        lateMoreThan7Test(library1, librarian1);
+    }
+
+    void noLateTest(Library library, Librarian librarian) throws ParseException {
         Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-        String checkOutDate = formatter.format(date);
         Calendar calendar = Calendar.getInstance();
 		calendar.setTime(date);
-		calendar.add(Calendar.DATE, 7);
+		calendar.add(Calendar.DATE, -7);
+        String checkOutDate = formatter.format(calendar.getTime());
+        calendar.add(Calendar.DATE, 7);
 		String dueDate = formatter.format(calendar.getTime());
 
         librarian.borrowBook("Percy Jackson", 0);
+        library.getPatrons().get(0).booksOut.get(0).checkOutDate = checkOutDate;
+        library.getPatrons().get(0).booksOut.get(0).dueDate = dueDate;
         assertEquals(dueDate, library.getPatrons().get(0).booksOut.get(0).dueDate);
 
-        calendar.add(Calendar.DATE, 3);
-		String newDueDate = formatter.format(calendar.getTime());
-
-        library.getPatrons().get(0).booksOut.get(0).dueDate = newDueDate;
+        library.getPatrons().get(0).booksOut.get(0).checkOutDate = checkOutDate;
+        library.getPatrons().get(0).booksOut.get(0).dueDate = dueDate;
         librarian.calculateFine(library.getPatrons().get(0).getId());
         assertEquals(0, library.getPatrons().get(0).fines); //no fine is applied if book is returned on time
+    }
 
-        calendar.add(Calendar.DATE, 10);
-		newDueDate = formatter.format(calendar.getTime());
+    void lateLessThan7Test(Library library, Librarian librarian) throws ParseException {
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        Calendar calendar1 = Calendar.getInstance();
+		calendar1.add(Calendar.DATE, -9);
+        String checkOutDate = formatter.format(calendar1.getTime());
+        calendar1.add(Calendar.DATE, 7);
+		String dueDate = formatter.format(calendar1.getTime());
 
-        library.getPatrons().get(0).booksOut.get(0).dueDate = newDueDate;
+        library.getPatrons().get(0).booksOut.get(0).checkOutDate = checkOutDate;
+        library.getPatrons().get(0).booksOut.get(0).dueDate = dueDate;
+        assertEquals(dueDate, library.getPatrons().get(0).booksOut.get(0).dueDate);
+
+        library.getPatrons().get(0).booksOut.get(0).checkOutDate = checkOutDate;
+        library.getPatrons().get(0).booksOut.get(0).dueDate = dueDate;
         librarian.calculateFine(library.getPatrons().get(0).getId());
         assertEquals(5, library.getPatrons().get(0).fines); //the fine is 5 dollars within the late days is less than 7 days
 
-        calendar.add(Calendar.DATE, 10);
-		newDueDate = formatter.format(calendar.getTime());
-
-        library.getPatrons().get(0).booksOut.get(0).dueDate = newDueDate;
-        librarian.calculateFine(library.getPatrons().get(0).getId());
-        assertEquals(library.getPatrons().get(0).booksOut.get(0).cost, library.getPatrons().get(0).fines); //the fine is the cost of the book after 7 days late
     }
+
+    void lateMoreThan7Test(Library library, Librarian librarian) throws ParseException {
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        Calendar calendar2 = Calendar.getInstance();
+		//calendar.setTime(date);
+		calendar2.add(Calendar.DATE, -15);
+        String checkOutDate = formatter.format(calendar2.getTime());
+        calendar2.add(Calendar.DATE, 7);
+        //calendar.setTime(date);
+		String dueDate = formatter.format(calendar2.getTime());
+
+        library.getPatrons().get(0).booksOut.get(0).checkOutDate = checkOutDate;
+        library.getPatrons().get(0).booksOut.get(0).dueDate = dueDate;
+        assertEquals(dueDate, library.getPatrons().get(0).booksOut.get(0).dueDate);
+
+        library.getPatrons().get(0).booksOut.get(0).checkOutDate = checkOutDate;
+        library.getPatrons().get(0).booksOut.get(0).dueDate = dueDate;
+        librarian.calculateFine(library.getPatrons().get(0).getId());
+        librarian.calculateFine(library.getPatrons().get(0).getId());
+        assertEquals(library.getPatrons().get(0).booksOut.get(0).cost + 5.0, library.getPatrons().get(0).fines); //the fine is the cost of the book after 7 days late
+    }
+
 
     @Test
     void payFineTest() {
