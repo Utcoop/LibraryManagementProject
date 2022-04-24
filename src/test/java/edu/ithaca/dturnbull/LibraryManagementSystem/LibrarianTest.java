@@ -283,17 +283,17 @@ public class LibrarianTest {
         assertEquals(22.99, library.getPatrons().get(0).fines);
 
         assertThrows(IllegalArgumentException.class, () -> librarian.payFine(library.getPatrons().get(0).getId(), -1)); //no negative amount
-        assertThrows(IllegalArgumentException.class, () -> librarian.payFine(library.getPatrons().get(0).getId(), 5.000)); //no decimal places more than 2
+        assertThrows(IllegalArgumentException.class, () -> librarian.payFine(library.getPatrons().get(0).getId(), -5)); 
+        assertThrows(IllegalArgumentException.class, () -> librarian.payFine(library.getPatrons().get(0).getId(), 1.555)); //no decimal places more than 2
+        assertThrows(IllegalArgumentException.class, () -> librarian.payFine(library.getPatrons().get(0).getId(), 100.1340)); //no decimal places more than 2
 
         librarian.payFine(library.getPatrons().get(0).getId(), 5.00);
         assertEquals(17.99, library.getPatrons().get(0).fines);
-
         
         librarian.payFine(library.getPatrons().get(0).getId(), 10.00);
-        assertEquals(7.99, library.getPatrons().get(0).fines);
-
-        librarian.payFine(library.getPatrons().get(0).getId(), 10.00);
-        assertEquals(-2.01, library.getPatrons().get(0).fines);
+        assertEquals(7.99, library.getPatrons().get(0).fines); 
+        librarian.payFine(library.getPatrons().get(0).getId(), 9.99);
+        assertEquals(-2.0, library.getPatrons().get(0).fines);
       
     }
 }
