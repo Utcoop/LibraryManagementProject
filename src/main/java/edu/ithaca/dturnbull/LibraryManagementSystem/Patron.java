@@ -59,7 +59,7 @@ public class Patron {
                 return true;
             }
         }
-        throw new InvalidBookException("This book doesn't exist in the library");
+        throw new InvalidBookException("This book isn't in your wishlist");
     }
 
     /**
@@ -74,8 +74,11 @@ public class Patron {
      * @return a string that represents the current wishlist
      */
     public String checkWishlist() {
-        // TODO
-        return "";
+        String books = "";
+        for (int i = 0; i < wishlist.size(); i++) {
+            books += wishlist.get(i).getTitle() + "\n";
+        }
+        return books;
     }
 
     /**
