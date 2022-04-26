@@ -165,7 +165,7 @@ public class PatronTest {
     }
 
     void lateLessThan7Test(Library library, Librarian librarian) throws ParseException {
-        Date date = new Date();
+        //Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         Calendar calendar1 = Calendar.getInstance();
 		calendar1.add(Calendar.DATE, -9);
@@ -185,7 +185,7 @@ public class PatronTest {
     }
 
     void lateMoreThan7Test(Library library, Librarian librarian) throws ParseException {
-        Date date = new Date();
+        //Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         Calendar calendar2 = Calendar.getInstance();
 		calendar2.add(Calendar.DATE, -15);

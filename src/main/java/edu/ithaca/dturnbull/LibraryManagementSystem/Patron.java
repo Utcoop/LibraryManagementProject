@@ -92,12 +92,20 @@ public class Patron {
 
     /**
      * 
-     * @param book
-     * @return True if the book was checked out successfully and false otherwise
+     * @param title of book to be checked out
+     * @param librarian handling the transaction
      */
-    public Boolean bookCheckout(Book book) {
-        // TODO
-        return false;
+    public void borrowBook(String title, Librarian librarian) {
+        librarian.borrowBook(title, this.Id);
+    }
+    
+    /**
+     * 
+     * @param title of book to be returned
+     * @param librarian handling the transaction
+     */
+    public void returnBook(String title, Librarian librarian) {
+        librarian.returnBook(title, this.Id);
     }
 
     public int getId() {
