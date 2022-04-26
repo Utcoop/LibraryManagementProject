@@ -63,11 +63,31 @@ public class Patron {
     }
 
     /**
+     * 
+     * @param payment
+     * @return
+     */
+    public double payFines(double payment) throws Exception {
+        if (isNumberValid(payment)) {
+            if (payment <= fines) {
+                fines -= payment;
+                fines = Math.round(fines * 100.0) / 100.0; // Multiply by 100 and round to cut off all decimals past the
+                                                           // hundreths place. Divide by 100 to make sure the number has
+                                                           // two decimasl again
+                return fines;
+            } else {
+                throw new IllegalArgumentException("Payment is too large");
+            }
+        } else {
+            throw new IllegalArgumentException("Payment amount is invalid.");
+        }
+    }
+
+    /**
      * @return the fines that are outstanding in this account
      */
     public double checkFines() {
-        // TODO
-        return -1;
+        return fines;
     }
 
     /**
@@ -101,5 +121,19 @@ public class Patron {
 
     public String getPassword() {
         return password;
+    }
+
+    /**
+     * @post checks to see if the @param num is valid
+     */
+    public static boolean isNumberValid(double num) {
+        if (num < 0) {
+            return false;
+        }
+        String numString = Double.toString(num); // convert number to string
+        int decimalIndex = numString.indexOf("."); // Find index of ".""
+        int decimalPlaces = numString.length() - decimalIndex - 1; // Subtract total length by the index of ".".
+                                                                   // Subtract by an extra 1 to account for index 0
+        return (decimalPlaces <= 2); // Check to see if decimal places is less than 2
     }
 }

@@ -112,4 +112,10 @@ public class PatronTest {
         //Throws an exception when attempting to remove a book from an empy list
         assertThrows(InvalidBookException.class, () -> jackson.removeFromWishlist("Percy Jackson"));
     }
+
+    @Test
+    void CheckandPayFinesTest(){
+        
+    }
+
 }
