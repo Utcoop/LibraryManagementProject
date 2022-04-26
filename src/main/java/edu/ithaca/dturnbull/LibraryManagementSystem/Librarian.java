@@ -114,11 +114,11 @@ public class Librarian {
         }
     }
 
-    public void addToWishList(String title, Patron patron) throws InvalidBookException {
+    public void addToWishlist(String title, Patron patron) throws InvalidBookException {
         patron.addToWishlist(title);
     }
 
-    public void removeFromWishList(String title, Patron patron) throws InvalidBookException {
+    public void removeFromWishlist(String title, Patron patron) throws InvalidBookException {
         patron.removeFromWishlist(title);
     }
 
@@ -159,34 +159,34 @@ public class Librarian {
     /**
      * @param amount
      * @post the specified patron's fine is paid
-     * @throws IllegalArgumentException if the amount is negative or have more than
-     *                                  two decimal places
+     * @throws IllegalArgumentException if the amount is negative or have more than two decimal places
      */
     public void payFine(int patronId, double amount) {
         if (amount < 0) {
             throw new IllegalArgumentException("No Negative Amount");
         }
 
+        
         String amountString = Double.toString(amount);
         String decimalPlaces = amountString.split("\\.")[1].toString();
         if (decimalPlaces.length() > 2) {
-            // if (amountString.split("\\.")[1].toString().length() > 2) {
-            throw new IllegalArgumentException("No more than two decimal places");
-            // }
+           // if (amountString.split("\\.")[1].toString().length() > 2) {
+                throw new IllegalArgumentException("No more than two decimal places");
+            //}
         }
 
         List<Patron> patrons = library.getPatrons();
         for (int i = 0; i < patrons.size(); i++) {
             if (patrons.get(i).getId() == patronId) {
                 patrons.get(i).fines -= amount;
-                DecimalFormat df = new DecimalFormat("#.##");
+                DecimalFormat df = new DecimalFormat("#.##");      
                 patrons.get(i).fines = Double.valueOf(df.format(patrons.get(i).fines));
-
+                
             }
         }
     }
 
-    public String checkWishList(Patron patron) {
+    public String checkWishlist(Patron patron) {
         return patron.checkWishlist();
     }
 

@@ -172,4 +172,21 @@ public class Library {
     public List<Librarian> getLibrarians() {
         return librarians;
     }
+
+    public static void main(String[] args) {
+        Library library = new Library();
+        HumanLibrarian librarian1 = new HumanLibrarian(library, "Kenny", "123");
+
+        library.addLibrarian(librarian1);
+
+        Kiosk kiosk1 = new Kiosk(library);
+        library.addLibrarian(kiosk1);
+
+        Kiosk kiosk2 = new Kiosk(library);
+        library.addLibrarian(kiosk2);
+
+        System.out.println(library.getLibrarians().get(0).getId());
+        System.out.println(library.getLibrarians().get(1).getId());
+        System.out.println(library.getLibrarians().get(2).getId());
+    }
 }
