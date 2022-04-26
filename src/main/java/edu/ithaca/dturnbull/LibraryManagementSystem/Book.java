@@ -3,12 +3,15 @@ package edu.ithaca.dturnbull.LibraryManagementSystem;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Scanner;
-
+import java.util.concurrent.TimeUnit;
+import java.time.format.DateTimeFormatter;  
+import java.time.LocalDateTime;    
 
 import java.util.Calendar;
 
@@ -29,6 +32,9 @@ public class Book {
     public String genre;
     public double cost;
     public int copies;
+    public String checkOutDate;
+    public String dueDate;
+    public Boolean penalized;
 
     /**
      * constructor
@@ -68,12 +74,23 @@ public class Book {
      */
 
     public Book(Book book) {
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        String checkOutDate = formatter.format(date);
+        Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		calendar.add(Calendar.DATE, 7);
+		String dueDate = formatter.format(calendar.getTime());
+
         this.title = book.title;
         this.author = book.author;
         this.publicationDate = book.publicationDate;
         this.genre = book.genre;
         this.cost = book.cost;
         this.copies = 1;
+        this.checkOutDate = checkOutDate;
+        this.dueDate = dueDate;
+        this.penalized = false;
     }
 
     public static boolean iswordValid(String author){
@@ -311,6 +328,27 @@ public class Book {
         return cost;
     }
 
+    public static void main(String[] args) throws ParseException {
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        String str = formatter.format(date);
+        Calendar c = Calendar.getInstance();
+		c.setTime(date);
+		c.add(Calendar.DATE, 7);
+		
+		String toDate = formatter.format(c.getTime());
+
+
+
+     Date date1 = formatter.parse(str);
+     Date date2 = formatter.parse(toDate);
+    long diff = date2.getTime() - date1.getTime();
+        int days = (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+        System.out.println(str);
+        System.out.println(toDate);
+        System.out.println(days);
+
+    }
 }
 
 
