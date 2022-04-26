@@ -116,7 +116,7 @@ public class Librarian {
         patron.addToWishlist(title);
     }
 
-    public void removeFromWishList(String title, Patron patron) throws InvalidBookException) {
+    public void removeFromWishList(String title, Patron patron) throws InvalidBookException {
         patron.removeFromWishlist(title);
     }
 
@@ -147,9 +147,12 @@ public class Librarian {
                         booksOut.get(j).penalized = true;
                         accumulatedFines += booksOut.get(j).cost;
                     } else {
+                        patrons.get(i).fines += accumulatedFines;
                     }
-                    patrons.get(i).fines += accumulatedFines;
                 }
+            }
+        }
+    }
     /**
      * @param amount
      * @post the specified patron's fine is paid

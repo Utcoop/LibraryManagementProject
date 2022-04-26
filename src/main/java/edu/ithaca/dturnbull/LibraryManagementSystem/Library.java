@@ -168,4 +168,8 @@ public class Library {
         // not present
         throw new InvalidUserException("Invalid ID/Password combination.");
     }
+
+    public List<Librarian> getLibrarians() {
+        return librarians;
+    }
 }
