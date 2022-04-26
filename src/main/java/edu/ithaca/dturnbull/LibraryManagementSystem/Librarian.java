@@ -116,7 +116,7 @@ public class Librarian {
         patron.addToWishlist(title);
     }
 
-    public void removeFromWishList(String title, Patron patron) throws InvalidBookException) {
+    public void removeFromWishList(String title, Patron patron) throws InvalidBookException {
         patron.removeFromWishlist(title);
     }
 
