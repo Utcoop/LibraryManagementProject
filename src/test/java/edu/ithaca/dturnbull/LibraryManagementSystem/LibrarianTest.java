@@ -308,4 +308,90 @@ public class LibrarianTest {
         assertEquals(-2.0, library.getPatrons().get(0).fines);
       
     }
+
+    @Test
+    void wishlistAddTest() throws Exception {
+        Library lib = new Library();
+        Patron jackson = new Patron(lib, "Jackson", "password");
+        Librarian librarian = new HumanLibrarian(lib, "V Z", "123");
+        lib.addBook("Percy Jackson", "Rick Riordan", "1234567891012", "02-12-2000", "Adventure", 10.00, 1);
+        lib.addBook("Percy Jackson 2", "Rick Riordan", "1234567891012", "02-12-2000", "Adventure", 10.00, 1);
+        lib.addBook("Percy Jackson 3", "Rick Riordan", "1234567891012", "02-12-2000", "Adventure", 10.00, 1);
+        lib.addBook("Percy Jackson 4", "Rick Riordan", "1234567891012", "02-12-2000", "Adventure", 10.00, 1);
+        lib.addBook("Percy Jackson 5", "Rick Riordan", "1234567891012", "02-12-2000", "Adventure", 10.00, 1);
+        lib.addBook("Coding for Dumbies", "Some Guy", "1234567891012", "02-12-2000", "Adventure", 10.00, 1);
+
+        // Ensures that all the example books can be added to a wishlist successfully
+        librarian.addToWishlist("Percy Jackson", jackson);
+        assertEquals("Percy Jackson\n", librarian.checkWishlist(jackson));
+        librarian.addToWishlist("Percy Jackson 2", jackson);
+        assertEquals("Percy Jackson\nPercy Jackson 2\n", librarian.checkWishlist(jackson));
+        librarian.addToWishlist("Percy Jackson 3", jackson);
+        assertEquals("Percy Jackson\nPercy Jackson 2\nPercy Jackson 3\n", librarian.checkWishlist(jackson));
+        librarian.addToWishlist("Percy Jackson 4", jackson);
+        assertEquals("Percy Jackson\nPercy Jackson 2\nPercy Jackson 3\nPercy Jackson 4\n", librarian.checkWishlist(jackson));
+        librarian.addToWishlist("Percy Jackson 5", jackson);
+        assertEquals("Percy Jackson\nPercy Jackson 2\nPercy Jackson 3\nPercy Jackson 4\nPercy Jackson 5\n",librarian.checkWishlist(jackson));
+        librarian.addToWishlist("Coding for Dumbies", jackson);
+        assertEquals("Percy Jackson\nPercy Jackson 2\nPercy Jackson 3\nPercy Jackson 4\nPercy Jackson 5\nCoding for Dumbies\n",librarian.checkWishlist(jackson));
+
+        // Tests to make sure exceptions are thrown if the book title is not found in
+        // the library.
+        assertThrows(InvalidBookException.class, () -> librarian.addToWishlist("Perry Jackson", jackson));
+        assertThrows(InvalidBookException.class, () -> librarian.addToWishlist("ASDF", jackson));
+        // Tests to make sure the same book can't be added to the library at the same
+        // time.
+        assertThrows(InvalidBookException.class, () -> librarian.addToWishlist("Percy Jackson", jackson));
+    }
+
+    @Test
+    void wishlistRemoveTest() throws Exception {
+        Library lib = new Library();
+        Patron jackson = new Patron(lib, "Jackson", "password");
+        Librarian librarian = new HumanLibrarian(lib, "V Z", "123");
+        lib.addBook("Percy Jackson", "Rick Riordan", "1234567891012", "02-12-2000", "Adventure", 10.00, 1);
+        lib.addBook("Percy Jackson 2", "Rick Riordan", "1234567891012", "02-12-2000", "Adventure", 10.00, 1);
+        lib.addBook("Percy Jackson 3", "Rick Riordan", "1234567891012", "02-12-2000", "Adventure", 10.00, 1);
+        lib.addBook("Percy Jackson 4", "Rick Riordan", "1234567891012", "02-12-2000", "Adventure", 10.00, 1);
+        lib.addBook("Percy Jackson 5", "Rick Riordan", "1234567891012", "02-12-2000", "Adventure", 10.00, 1);
+        lib.addBook("Coding for Dumbies", "Some Guy", "1234567891012", "02-12-2000", "Adventure", 10.00, 1);
+
+        // Ensures that all the example books can be added to a wishlist successfully
+        librarian.addToWishlist("Percy Jackson", jackson);
+        assertEquals("Percy Jackson\n", librarian.checkWishlist(jackson));
+        librarian.addToWishlist("Percy Jackson 2", jackson);
+        assertEquals("Percy Jackson\nPercy Jackson 2\n", librarian.checkWishlist(jackson));
+        librarian.addToWishlist("Percy Jackson 3", jackson);
+        assertEquals("Percy Jackson\nPercy Jackson 2\nPercy Jackson 3\n", librarian.checkWishlist(jackson));
+        librarian.addToWishlist("Percy Jackson 4", jackson);
+        assertEquals("Percy Jackson\nPercy Jackson 2\nPercy Jackson 3\nPercy Jackson 4\n", librarian.checkWishlist(jackson));
+        librarian.addToWishlist("Percy Jackson 5", jackson);
+        assertEquals("Percy Jackson\nPercy Jackson 2\nPercy Jackson 3\nPercy Jackson 4\nPercy Jackson 5\n",librarian.checkWishlist(jackson));
+        librarian.addToWishlist("Coding for Dumbies", jackson);
+        assertEquals("Percy Jackson\nPercy Jackson 2\nPercy Jackson 3\nPercy Jackson 4\nPercy Jackson 5\nCoding for Dumbies\n",librarian.checkWishlist(jackson));
+
+        //Exception is thrown when the book being removed is not in the wishlist
+        assertThrows(InvalidBookException.class, () -> jackson.removeFromWishlist("Percy Jackson 6"));
+        assertThrows(InvalidBookException.class, () -> jackson.removeFromWishlist("Coding for Smarties"));
+        assertThrows(InvalidBookException.class, () -> jackson.removeFromWishlist("Perry Johnson"));
+        
+        //Remove from the start of the list
+        librarian.removeFromWishlist("Percy Jackson", jackson);
+        assertEquals("Percy Jackson 2\nPercy Jackson 3\nPercy Jackson 4\nPercy Jackson 5\nCoding for Dumbies\n",jackson.checkWishlist());
+        //Remove from the end of the list
+        librarian.removeFromWishlist("Coding for Dumbies", jackson);
+        assertEquals("Percy Jackson 2\nPercy Jackson 3\nPercy Jackson 4\nPercy Jackson 5\n",jackson.checkWishlist());
+        //Remove from the middle of the list
+        librarian.removeFromWishlist("Percy Jackson 3", jackson);
+        assertEquals("Percy Jackson 2\nPercy Jackson 4\nPercy Jackson 5\n",jackson.checkWishlist());
+        librarian.removeFromWishlist("Percy Jackson 4", jackson);
+        assertEquals("Percy Jackson 2\nPercy Jackson 5\n",jackson.checkWishlist());
+        //Remove the final two books
+        librarian.removeFromWishlist("Percy Jackson 5", jackson);
+        assertEquals("Percy Jackson 2\n",jackson.checkWishlist());
+        librarian.removeFromWishlist("Percy Jackson 2", jackson);
+        assertEquals("",jackson.checkWishlist());
+        //Throws an exception when attempting to remove a book from an empy list
+        assertThrows(InvalidBookException.class, () -> librarian.removeFromWishlist("Percy Jackson", jackson));
+    }
 }
