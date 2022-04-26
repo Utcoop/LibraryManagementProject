@@ -112,12 +112,12 @@ public class Librarian {
         }
     }
 
-    public void addToWishList(String title) {
-
+    public void addToWishList(String title, Patron patron) throws InvalidBookException {
+        patron.addToWishlist(title);
     }
 
-    public void removeFromWishList(String title) {
-
+    public void removeFromWishList(String title, Patron patron) throws InvalidBookException) {
+        patron.removeFromWishlist(title);
     }
 
     /***
@@ -150,10 +150,6 @@ public class Librarian {
                     }
                     patrons.get(i).fines += accumulatedFines;
                 }
-            }
-        }
-    }
-
     /**
      * @param amount
      * @post the specified patron's fine is paid
@@ -184,9 +180,8 @@ public class Librarian {
         }
     }
 
-
-    public void checkWishList() {
-
+    public String checkWishList(Patron patron) {
+        return patron.checkWishlist();
     }
 
     public int getId() {
