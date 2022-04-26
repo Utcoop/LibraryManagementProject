@@ -119,7 +119,7 @@ public class Library {
         while (l <= r) {
             int m = l + (r - l) / 2;
             // Check if x is present at mid
-            if (patrons.get(m).getId() == Id) {
+            if (patrons.get(m).getId() == Id){
                 if (patrons.get(m).getPassword().equals(pwrd)) {
                     return true;
                 } else {
@@ -150,7 +150,7 @@ public class Library {
         while (l <= r) {
             int m = l + (r - l) / 2;
             // Check if x is present at mid
-            if (librarians.get(m).getId() == Id) {
+            if (librarians.get(m).getId() == Id){
                 if (librarians.get(m).getPassword().equals(pwrd)) {
                     return true;
                 } else {

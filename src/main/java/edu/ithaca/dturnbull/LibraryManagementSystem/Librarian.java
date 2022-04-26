@@ -22,7 +22,7 @@ public class Librarian {
     /***
      * 
      * @param accountId of the patron
-     * @param password of the patron
+     * @param password  of the patron
      * @post the credential of the patron is confirmed
      */
     public boolean confirmCred(int accountId, String password) {
@@ -61,30 +61,32 @@ public class Librarian {
 
     /***
      * @param title of the book to borrw, id of the patron borrowing
-     * @post the number of the book copies is decremented by 1 if the book is available
-     * @throws IllegalArgumentException if the book cannot be borrowed due to the lack of copies available
+     * @post the number of the book copies is decremented by 1 if the book is
+     *       available
+     * @throws IllegalArgumentException if the book cannot be borrowed due to the
+     *                                  lack of copies available
      */
     public void borrowBook(String title, int patronId) {
         List<Book> books = library.getBooks();
         List<Patron> patrons = library.getPatrons();
         if (checkBook(title)) {
-        for (int j = 0; j < patrons.size(); j++) {
-            if (patrons.get(j).getId() == patronId) {
-                if (patrons.get(j).booksOut.size() > patrons.get(j).maxBooks) {
-                    throw new IllegalArgumentException();
-                } else {
-                    for (int i = 0; i < books.size(); i++) {
-                        if (books.get(i).title.equals(title)) {
-                            patrons.get(j).booksOut.add(new Book(books.get(i)));
-                            books.get(i).copies--;
+            for (int j = 0; j < patrons.size(); j++) {
+                if (patrons.get(j).getId() == patronId) {
+                    if (patrons.get(j).booksOut.size() > patrons.get(j).maxBooks) {
+                        throw new IllegalArgumentException();
+                    } else {
+                        for (int i = 0; i < books.size(); i++) {
+                            if (books.get(i).title.equals(title)) {
+                                patrons.get(j).booksOut.add(new Book(books.get(i)));
+                                books.get(i).copies--;
+                            }
                         }
                     }
                 }
             }
-        }       
-       } else {
-           throw new IllegalArgumentException("Book is not available to be borrowed.");
-       }
+        } else {
+            throw new IllegalArgumentException("Book is not available to be borrowed.");
+        }
     }
 
     /***
@@ -184,7 +186,6 @@ public class Librarian {
         }
     }
 
-
     public String checkWishList(Patron patron) {
         return patron.checkWishlist();
     }
@@ -200,9 +201,8 @@ public class Librarian {
     public static void main(String[] args) {
         String amountString = "5.000";
         if (amountString.contains(".")) {
-            System.out.println(amountString.split("\\.")[1]) ;
-                
-            }
+            System.out.println(amountString.split("\\.")[1]);
+
         }
     }
-
+}
