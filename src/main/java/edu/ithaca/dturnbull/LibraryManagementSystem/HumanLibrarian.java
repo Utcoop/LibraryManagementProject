@@ -3,8 +3,7 @@ package edu.ithaca.dturnbull.LibraryManagementSystem;
 import java.util.List;
 
 public class HumanLibrarian extends Librarian {
-    private static String name;
-    private static String password;
+    private String name;
     
     public HumanLibrarian(Library library, String name, String password) {
         super(library);
@@ -71,5 +70,9 @@ public class HumanLibrarian extends Librarian {
 
     public String getName() {
         return name;
+    }
+
+    public String getPassword(){
+        return password;
     }
 }
