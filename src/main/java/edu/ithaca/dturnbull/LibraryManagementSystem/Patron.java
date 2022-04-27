@@ -94,9 +94,13 @@ public class Patron {
      * 
      * @param title of book to be checked out
      * @param librarian handling the transaction
+     * @throws UnpaidFinesException
      */
-    public void borrowBook(String title, Librarian librarian) {
-        librarian.borrowBook(title, this.Id);
+    public void borrowBook(String title, Librarian librarian) throws UnpaidFinesException {
+        if (this.fines > 0)
+            librarian.borrowBook(title, this.Id);
+        else
+            throw new UnpaidFinesException("You have outstanding fines");
     }
     
     /**
