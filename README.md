@@ -16,8 +16,8 @@
    * Sprint #1 Retrospective Doc: https://docs.google.com/document/d/19qTHqx826r6PCNsXDKlLPbtuFyeEHVUR0Gwjqgzdf5o/edit?usp=sharing <br/>
 
 - Sprint 2: 
-   * Sprint #2 goal: Fully functional basic library methods with unit and integration tests. (check out/in, add/remove to/from wishlist, book methods, add/remove books, etc) <br/>
-   * Sprint #2 Review Demo: None <br/>
+   * Sprint #2 goal: Fully functional basic library methods with unit and integration tests. (check out/in, add/remove to/from wishlist, book methods, add/remove books, etc) (Scrum Master: VZ)<br/>
+   * Sprint #2 Review Demo: https://docs.google.com/document/d/16N04mbPeRACpYR4PljBgUBlnQomplb26L7CujTQDnQk/edit <br/>
    * Sprint #2 Retrospective Doc: None <br/>
 
 Three Use Cases that you will implement first:
