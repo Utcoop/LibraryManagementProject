@@ -36,9 +36,9 @@ public class Library {
      * @post the book is removed from the library's book list
      */
     public void removeBook(String title) {
-        for (Book book : books) {
-            if (book.getTitle().equals(title)) {
-                books.remove(book);
+        for (int i = 0; i < books.size(); i++) {
+            if (books.get(i).getTitle().equals(title)) {
+                books.remove(books.get(i));
             }
         }
     }
@@ -119,7 +119,7 @@ public class Library {
         while (l <= r) {
             int m = l + (r - l) / 2;
             // Check if x is present at mid
-            if (patrons.get(m).getId() == Id) {
+            if (patrons.get(m).getId() == Id){
                 if (patrons.get(m).getPassword().equals(pwrd)) {
                     return patrons.get(m);
                 } else {
@@ -150,7 +150,7 @@ public class Library {
         while (l <= r) {
             int m = l + (r - l) / 2;
             // Check if x is present at mid
-            if (librarians.get(m).getId() == Id) {
+            if (librarians.get(m).getId() == Id){
                 if (librarians.get(m).getPassword().equals(pwrd)) {
                     return librarians.get(m);
                 } else {

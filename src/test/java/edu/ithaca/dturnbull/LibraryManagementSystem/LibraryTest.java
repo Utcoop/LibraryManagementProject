@@ -2,9 +2,6 @@ package edu.ithaca.dturnbull.LibraryManagementSystem;
 
 import org.junit.jupiter.api.Test;
 
-import edu.ithaca.dturnbull.LibraryManagementSystem.HumanLibrarian;
-import edu.ithaca.dturnbull.LibraryManagementSystem.Kiosk;
-import edu.ithaca.dturnbull.LibraryManagementSystem.Library;
 
 import static org.junit.jupiter.api.Assertions.*;
 
