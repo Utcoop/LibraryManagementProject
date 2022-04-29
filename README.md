@@ -18,7 +18,7 @@
 - Sprint 2: 
    * Sprint #2 goal: Fully functional basic library methods with unit and integration tests. (check out/in, add/remove to/from wishlist, book methods, add/remove books, etc) (Scrum Master: VZ)<br/>
    * Sprint #2 Review Demo: https://docs.google.com/document/d/16N04mbPeRACpYR4PljBgUBlnQomplb26L7CujTQDnQk/edit <br/>
-   * Sprint #2 Retrospective Doc: None <br/>
+   * Sprint #2 Retrospective Doc: https://docs.google.com/document/d/133vv7kpOs4ZTl0rJsXigriOdbaSgkmRKYt3fwKmM1CA/edit <br/>
 
 Three Use Cases that you will implement first:
 1. Login (For Librarian and Patron)
