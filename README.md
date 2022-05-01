@@ -7,7 +7,7 @@
 3. VZ
 
 
-#### <a href="https://drive.google.com/file/d/1NmmAWLjzSOZznr54E5h0V06SBwgq8pqn/view?usp=sharing" target="_blank">ULM Diagrams<a/>
+#### <a href="https://drive.google.com/file/d/1NmmAWLjzSOZznr54E5h0V06SBwgq8pqn/view?usp=sharing" target="_blank">UML Diagrams<a/>
 
 #### Sprints:
 - Sprint 1: 

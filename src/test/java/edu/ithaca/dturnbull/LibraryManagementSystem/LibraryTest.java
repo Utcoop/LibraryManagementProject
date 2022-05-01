@@ -52,10 +52,10 @@ public class LibraryTest {
         lib.addPatron(new Patron(lib, "Vattana", "1passWord1"));
         lib.addPatron(new Patron(lib, "V Z", "secret Password"));
         //Checks if each user can login about it
-        assertTrue(lib.PatronLogin(0, "password"));
-        assertTrue(lib.PatronLogin(1, "Password11"));
-        assertTrue(lib.PatronLogin(2, "1passWord1"));
-        assertTrue(lib.PatronLogin(3, "secret Password"));
+        assertEquals( lib.getPatrons().get(0), lib.PatronLogin(0, "password"));
+        assertEquals( lib.getPatrons().get(1),lib.PatronLogin(1, "Password11"));
+        assertEquals( lib.getPatrons().get(2),lib.PatronLogin(2, "1passWord1"));
+        assertEquals( lib.getPatrons().get(3),lib.PatronLogin(3, "secret Password"));
         //Checks to see if PatronLogin doesn't accept incorrect passwords
         assertThrows(InvalidUserException.class,()->lib.PatronLogin(0, "Password")); // upper case 
         assertThrows(InvalidUserException.class,()->lib.PatronLogin(0, "password11")); // added digits
@@ -76,10 +76,10 @@ public class LibraryTest {
         lib.addLibrarian(new HumanLibrarian(lib, "Vattana", "1passWord1"));
         lib.addLibrarian(new HumanLibrarian(lib, "V Z", "secret Password"));
         //Checks if each user can login about it
-        assertTrue(lib.LibrarianLogin(0, "password"));
-        assertTrue(lib.LibrarianLogin(1, "Password11"));
-        assertTrue(lib.LibrarianLogin(2, "1passWord1"));
-        assertTrue(lib.LibrarianLogin(3, "secret Password"));
+        assertEquals( lib.getLibrarians().get(0), lib.LibrarianLogin(0, "password"));
+        assertEquals( lib.getLibrarians().get(1), lib.LibrarianLogin(1, "Password11"));
+        assertEquals( lib.getLibrarians().get(2), lib.LibrarianLogin(2, "1passWord1"));
+        assertEquals( lib.getLibrarians().get(3), lib.LibrarianLogin(3, "secret Password"));
         //Checks to see if PatronLogin doesn't accept incorrect passwords
         assertThrows(InvalidUserException.class,()->lib.LibrarianLogin(0, "Password")); // upper case 
         assertThrows(InvalidUserException.class,()->lib.LibrarianLogin(0, "password11")); // added digits
