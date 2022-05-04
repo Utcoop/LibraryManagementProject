@@ -97,7 +97,7 @@ public class Patron {
      * @throws UnpaidFinesException
      */
     public void borrowBook(String title, Librarian librarian) throws UnpaidFinesException {
-        if (this.fines > 0)
+        if (this.fines <= 0)
             librarian.borrowBook(title, this.Id);
         else
             throw new UnpaidFinesException("You have outstanding fines");
