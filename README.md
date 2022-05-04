@@ -1,6 +1,12 @@
 # CS345 - Software Engineering at Ithaca College
 ## Project 01 - Bank Software
 
+### Quick Start Guide
+1. Clone Repository
+2. run main method in integrationtest.java
+3. run main method in main.java
+
+
 #### Team Members:
 1. Jackson Becker 
 2. Pichsereyvattana Chan 
@@ -31,7 +37,6 @@ Which classes & methods do you need to implement for these use cases?
 2. - Librarian, HumanLibrarian, Kiosk (Vattana)
 3. - Book (VZ)
 4. - Patron (Jackson)
-5. << add more as needed >>
 
 Don't forget to use Test-Driven Development (TDD)
 1. Write Class and Method Function Headers
