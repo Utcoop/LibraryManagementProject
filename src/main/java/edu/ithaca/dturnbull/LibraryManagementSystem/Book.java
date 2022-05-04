@@ -65,13 +65,7 @@ public class Book {
         }
 
     }
-    /**
-     * iswordValid()
-     * checks if entered word is valid
-     * @param author
-     * @return
-     * method type - accessor - checks word
-     */
+  
 
     public Book(Book book) {
         Date date = new Date();
@@ -93,6 +87,13 @@ public class Book {
         this.penalized = false;
     }
 
+    /**
+     * iswordValid()
+     * checks if entered word is valid
+     * @param author
+     * @return
+     * method type - accessor - checks word
+     */
     public static boolean iswordValid(String author){
         if(author == ""){
             return false;
