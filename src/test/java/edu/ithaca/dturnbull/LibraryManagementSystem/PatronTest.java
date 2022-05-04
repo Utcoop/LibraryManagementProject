@@ -222,7 +222,7 @@ public class PatronTest {
     }
 
     @Test
-    void checkBookborrowBookreturnBookTest() throws UnrecognizedException, ParseException {
+    void checkBookborrowBookreturnBookTest() throws UnrecognizedException, ParseException, UnpaidFinesException {
         Library library1 = new Library();
 
         HumanLibrarian librarian1 = new HumanLibrarian(library1, "S1mple", "123");
@@ -255,7 +255,7 @@ public class PatronTest {
         assertTrue(librarian.checkBook("Harry Potter"));
     }
 
-    void borrowBookTest(Library library, Librarian librarian) {
+    void borrowBookTest(Library library, Librarian librarian) throws UnpaidFinesException {
         library.getPatrons().get(0).borrowBook("Percy Jackson", librarian);
         assertEquals(4, library.getBooks().get(0).copies);
 

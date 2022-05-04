@@ -328,28 +328,6 @@ public class Book {
     public double getCost() {
         return cost;
     }
-
-    public static void main(String[] args) throws ParseException {
-        Date date = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-        String str = formatter.format(date);
-        Calendar c = Calendar.getInstance();
-		c.setTime(date);
-		c.add(Calendar.DATE, 7);
-		
-		String toDate = formatter.format(c.getTime());
-
-
-
-     Date date1 = formatter.parse(str);
-     Date date2 = formatter.parse(toDate);
-    long diff = date2.getTime() - date1.getTime();
-        int days = (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
-        System.out.println(str);
-        System.out.println(toDate);
-        System.out.println(days);
-
-    }
 }
 
 

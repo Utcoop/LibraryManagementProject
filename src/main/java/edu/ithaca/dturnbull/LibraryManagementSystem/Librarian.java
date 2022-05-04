@@ -114,12 +114,12 @@ public class Librarian {
         }
     }
 
-    public void addToWishlist(String title, Patron patron) throws InvalidBookException {
-        patron.addToWishlist(title);
+    public boolean addToWishlist(String title, Patron patron) throws InvalidBookException {
+        return patron.addToWishlist(title);
     }
 
-    public void removeFromWishlist(String title, Patron patron) throws InvalidBookException {
-        patron.removeFromWishlist(title);
+    public boolean removeFromWishlist(String title, Patron patron) throws InvalidBookException {
+        return patron.removeFromWishlist(title);
     }
 
     /***
@@ -198,11 +198,4 @@ public class Librarian {
         return password;
     }
 
-    public static void main(String[] args) {
-        String amountString = "5.000";
-        if (amountString.contains(".")) {
-            System.out.println(amountString.split("\\.")[1]);
-
-        }
-    }
 }
