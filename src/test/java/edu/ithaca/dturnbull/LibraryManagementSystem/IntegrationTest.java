@@ -25,7 +25,7 @@ public class IntegrationTest {
         PatronTest(mainLibrary); // test for Patron Class
         addBookTest(mainLibrary); // Tests Library's add book method
         removeBookTest(mainLibrary); // Tests Library's remove book method
-        wishlistTest(mainLibrary);        
+        wishlistTest(mainLibrary); // Tests wishlist methods   
     }
 
     void LibrarianTest(Library mainLibrary, List<Librarian> librarianList) {
