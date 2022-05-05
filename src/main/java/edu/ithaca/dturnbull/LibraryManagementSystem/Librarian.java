@@ -38,10 +38,10 @@ public class Librarian {
     }
 
     /***
-     * 
+     *  @param Patron returns the fines of the patron
      */
-    public void checkBalance(String patronId) {
-
+    public double checkFines(Patron patron) {
+        return patron.checkFines();
     }
 
     /***

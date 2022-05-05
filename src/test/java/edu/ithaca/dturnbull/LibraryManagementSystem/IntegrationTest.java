@@ -22,7 +22,7 @@ public class IntegrationTest {
     void integrationTest() throws Exception {
         LibrarianTest(mainLibrary, librarianList); // test for Librarian Class
         LibraryTest(mainLibrary, librarianList); // test for Library Class
-        PatronTest(mainLibrary, librarianList); // test for Patron Class
+        PatronTest(mainLibrary); // test for Patron Class
         addBookTest(mainLibrary); // Tests Library's add book method
         removeBookTest(mainLibrary); // Tests Library's remove book method
         wishlistTest(mainLibrary);        
@@ -84,7 +84,7 @@ public class IntegrationTest {
         }
     }
 
-    void PatronTest(Library mainLibrary, List<Librarian> librarianList) {
+    void PatronTest(Library mainLibrary) {
         // check if patrons added by HumanLibrarian objects are in the mainLibrary's
         // patron list with correct information
         assertEquals("Vattana", mainLibrary.getPatrons().get(0).getName());
