@@ -12,6 +12,7 @@
 2. Pichsereyvattana Chan 
 3. VZ
 
+#### <a href="https://docs.google.com/presentation/d/1LOAuQYapCDWTH6pjv6jmRwaNMFsLueODipZJOcpElIA/edit#slide=id.g5dc4e38d75_0_89">Final Presentation<a/>
 
 #### <a href="https://drive.google.com/file/d/1NmmAWLjzSOZznr54E5h0V06SBwgq8pqn/view?usp=sharing" target="_blank">UML Diagrams<a/>
 
